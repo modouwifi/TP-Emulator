@@ -18,8 +18,6 @@ function stateMachine () {
   };
   var ALPHA = 1;
 
-
-
   setInterval (function(){
     var prev_download_speed = data.download_speed;
     var prev_upload_speed = data.upload_speed;
@@ -192,14 +190,12 @@ var TPdata = {
 
 var TPdataBackup = $.extend(true, {}, TPdata);
 
-
 $(document).ready(function () {
   FastClick.attach(document.body);
   $.fx.interval = 16;
   var screenHeight = $("#screen").height();
   var viewContainer = $("#screen");
   var launcherPageNum = 0;
-
 
   var viewController = {
     guide: function () {;
@@ -426,8 +422,6 @@ $(document).ready(function () {
         }
         return method;
       }
-
-
     },
 
     launcherMenu : function () {
@@ -469,8 +463,6 @@ $(document).ready(function () {
         blackListClick();
       }
 
-
-
       var scrollView_whiteList = control.scroll($white_list);
       var scrollView_blackList = control.scroll($black_list);
 
@@ -492,7 +484,6 @@ $(document).ready(function () {
         tab_underline.css({
           "transform": "translate3d(100%,0,0)",
         });
-
       }
 
       $tab.click(function () {
@@ -562,7 +553,6 @@ $(document).ready(function () {
 
       })
     },
-
 
     networkConfig: function () { //网络设置
       var $view = viewLoad(".view-networkConfig")
@@ -697,8 +687,6 @@ $(document).ready(function () {
 
     },
 
-
-
     networkConfig_internet: function () {
       var $view = viewLoad(".view-networkConfig-internet")
       control.navbar($view);
@@ -715,7 +703,6 @@ $(document).ready(function () {
         $view.find(".pppoe-password-text").text(TPdata.system.pppoe_password);
 
       };
-
 
       $(".segmentedControl-cell").click(function () {
         if ( $(this).hasClass("segmentedControl_selected")) {
@@ -751,8 +738,6 @@ $(document).ready(function () {
         })
       })
 
-
-
       $view.find(".navbar-button").click(function () {
         if ($(".segmentedControl_selected").index() == 0) {
           TPdata.system.internet_mode = "dhcp";
@@ -765,8 +750,6 @@ $(document).ready(function () {
         navStackPop ();
       });
     },
-
-
 
     networkConfig_wifi: function () {
       var $view = viewLoad(".view-networkConfig-wifi")
@@ -849,8 +832,6 @@ $(document).ready(function () {
       })
     },
 
-
-
     networkConfig_ap_wifi: function () {
       var $view = viewLoad(".view-wifi-list")
       control.navbar($view);
@@ -887,7 +868,6 @@ $(document).ready(function () {
           TPdata.system.AP_wifi_password = password;
           TPdata.system.AP_mode = true;
 
-
           var $alert = control.alert([
             {"text": "确定", "click": function () {
               $alert.ok();
@@ -898,13 +878,10 @@ $(document).ready(function () {
 
           $alert.content.text(ssid + " 现在拥有更大的覆盖范围");
           $alert.title.text("无线扩展已开启");
-
-
         })
 
       });
     },
-
 
     networkConfig_ap_close_alert : function (ssid) {
       var $alert = control.alert([
@@ -922,7 +899,6 @@ $(document).ready(function () {
       $alert.title.text("关闭无线扩展功能");
 
     },
-
 
     expertMode: function () {
       var $view = viewLoad(".view-expertMode")
@@ -1012,7 +988,6 @@ $(document).ready(function () {
         })
       }
 
-
       if(TPdata.system.wifi_encrypt == true) {
         $view.find(".wifi-encrypt-text").text("已开启");
         var wifi_encrypt_switch = control.switch($view.find(".wifi-encrypt-switch"), "on", true);
@@ -1033,7 +1008,6 @@ $(document).ready(function () {
         })
       })
 
-
       $switch.on("off", function () {
         $view.find(".wirelessNetwork-off").fadeIn(globeDuration);
         $view.find(".wirelessNetwork-on").fadeOut(globeDuration);
@@ -1053,7 +1027,6 @@ $(document).ready(function () {
         $(".wifi-password").hide(globeDuration);
       })
 
-
       function wirelessNetwork_close_alert() {
 
         var $alert = control.alert([
@@ -1072,7 +1045,6 @@ $(document).ready(function () {
 
       }
     },
-
 
     gameAccelerater: function () {
       var $view = viewLoad(".view-gameAccelerater");
@@ -1132,7 +1104,6 @@ $(document).ready(function () {
       }
     },
 
-
     resetConfirmAlert: function () {
 
       var $alert = control.alert([
@@ -1149,7 +1120,6 @@ $(document).ready(function () {
       $alert.title.text("恢复出厂设置");
 
     },
-
 
     time: function() {
       var $view = viewLoad($(".view-time"))
@@ -1168,7 +1138,6 @@ $(document).ready(function () {
         $view.find(".time-number").css("left",time_marginLeft + "px")
 
       }
-
 
       function dateUpdate () {
         var date = new Date();
@@ -1236,8 +1205,6 @@ $(document).ready(function () {
         $view.find(".time-number")
           .css("left",time_marginLeft + "px")
         }
-
-
     },
 
     systemUpdate: function() {
@@ -1476,7 +1443,6 @@ $(document).ready(function () {
       return scrollView;
     },
 
-
     alert: function (buttons) {
       var $alert = viewLoad(".view-alert", "alert");
       if(buttons){
@@ -1558,7 +1524,6 @@ $(document).ready(function () {
           $keyboard.placeholder.hide();
         }
       }
-
 
       $keyboard.content = $keyboard.find(".content");
       var btn_shift = $keyboard.find(".shift");
@@ -1731,11 +1696,7 @@ $(document).ready(function () {
         $("#screen").trigger("internetConnectionOff")
       })
     },
-
-
   }
-
-
 
   var currentPage;
 
@@ -1842,7 +1803,6 @@ $(document).ready(function () {
     control.transitions.fadeIn(currentPage)
   }
 
-
   function modalViewController (navTarget, viewData) {
     if (viewData == undefined) {
       var viewData = "";
@@ -1850,7 +1810,6 @@ $(document).ready(function () {
 
     viewController[navTarget](viewData);
   }
-
 
   var system = {
     boot: function () {
@@ -1903,8 +1862,6 @@ $(document).ready(function () {
   }
 
 })
-
-
 
 
 // 正在尝试链接网络
