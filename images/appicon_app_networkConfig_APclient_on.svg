@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 17.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 88 64" enable-background="new 0 0 88 64" xml:space="preserve">
+<g>
+	<defs>
+		<filter id="Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x="23.688" y="31.26" width="28.009" height="18.673">
+			
+				<feColorMatrix  type="matrix" values="-1 0 0 0 1  0 -1 0 0 1  0 0 -1 0 1  0 0 0 1 0" color-interpolation-filters="sRGB" result="source"/>
+			<feFlood  style="flood-color:white;flood-opacity:1" result="back"/>
+			<feBlend  in="source" in2="back" mode="normal"/>
+		</filter>
+	</defs>
+	<mask maskUnits="userSpaceOnUse" x="23.688" y="31.26" width="28.009" height="18.673" id="SVGID_1_">
+		<g filter="url(#Adobe_OpacityMaskFilter)">
+			<circle fill="#FFFFFF" cx="42.065" cy="34.525" r="4.528"/>
+		</g>
+	</mask>
+	<g mask="url(#SVGID_1_)">
+		<path fill="none" stroke="#0086FF" stroke-width="1.7047" stroke-linejoin="round" stroke-miterlimit="10" d="M50.845,49.933
+			c0-9.842-7.979-17.821-17.821-17.821c-3.247,0-6.288,0.873-8.909,2.389"/>
+		<path fill="none" stroke="#0086FF" stroke-width="1.7047" stroke-linejoin="round" stroke-miterlimit="10" d="M44.904,49.933
+			c0-6.562-5.319-11.881-11.881-11.881c-2.164,0-4.192,0.582-5.94,1.593"/>
+		<path fill="none" stroke="#0086FF" stroke-width="1.7047" stroke-linejoin="round" stroke-miterlimit="10" d="M38.964,49.933
+			c0-3.281-2.66-5.94-5.94-5.94c-1.082,0-2.096,0.291-2.97,0.796"/>
+	</g>
+	<circle fill="#6B6B6B" stroke="#0086FF" stroke-width="1.0228" stroke-miterlimit="10" cx="33.024" cy="49.933" r="1.067"/>
+	<g>
+		<path fill="none" stroke="#0086FF" stroke-width="1.7047" stroke-linejoin="round" stroke-miterlimit="10" d="M59.886,34.525
+			c0-9.842-7.979-17.821-17.821-17.821c-3.247,0-6.288,0.873-8.909,2.389"/>
+		<path fill="none" stroke="#0086FF" stroke-width="1.7047" stroke-linejoin="round" stroke-miterlimit="10" d="M53.945,34.525
+			c0-6.562-5.319-11.881-11.881-11.881c-2.164,0-4.192,0.582-5.94,1.593"/>
+		<path fill="none" stroke="#0086FF" stroke-width="1.7047" stroke-linejoin="round" stroke-miterlimit="10" d="M48.005,34.525
+			c0-3.281-2.66-5.94-5.94-5.94c-1.082,0-2.096,0.291-2.97,0.796"/>
+	</g>
+	<circle fill="#6B6B6B" stroke="#0086FF" stroke-width="1.0228" stroke-miterlimit="10" cx="42.065" cy="34.525" r="1.067"/>
+</g>
+</svg>

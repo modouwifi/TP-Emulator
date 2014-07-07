@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" charset="utf8">
+<link href="stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+<script src="scripts/jquery-2.0.3.min.js" type="text/javascript"></script>
+<script src="scripts/fastclick.js" type="text/javascript"></script>
+<script src="scripts/all.js" type="text/javascript"></script>
+
+</head>
+<body>
+	<div id="screen"></div>
+	<div class="view-collection">
+		
+		<div class="view view-alert">
+			<div class="overlay"></div>
+			<div class="alert-container">
+				<div class="alert-body">
+					<div class="alert-title"></div>
+					<div class="alert-content"></div>
+				</div>
+				<div class="alert-footer">
+					<!-- <div class="modal-button"></div> -->
+				</div>
+			</div>
+		</div>
+
+		<div class="view view-cableCheck">
+			<div class="navbar">
+				<div class="navbar-title">请插入网线</div>
+				<div class="navbar-button">跳过</div>
+			</div>
+			<div class="content"></div>
+		</div>
+
+		<div class="boot-wifi-enable-alert">
+			<div class="cell">
+				<div class="cell-title">无线名称</div>
+				<div class="cell-content ssid">1231231</div>
+			</div>
+			<div class="cell">
+				<div class="cell-title">密码</div>
+				<div class="cell-content password">1231231</div>
+			</div>
+		</div>
+
+		<div class="spin-large">
+			<div class="dot"></div>
+			<div class="dot"></div>
+			<div class="dot"></div>
+			<div class="dot"></div>
+			<div class="dot"></div>
+			<div class="dot"></div>
+			<div class="dot"></div>
+			<div class="dot"></div>
+			<div class="dot"></div>
+			<div class="dot"></div>
+			<div class="dot"></div>
+			<div class="dot"></div>
+		</div>
+
+		<div class="view view-Uboot">
+			<div class="boot-logo"></div>
+		</div>
+
+		<div class="view view-boot">
+			<div class="boot-logo"></div>
+			<div class="boot-spin">
+				<div class="spin-leaf"></div>
+				<div class="spin-leaf"></div>
+				<div class="spin-leaf"></div>
+				<div class="spin-leaf"></div>
+				<div class="spin-leaf"></div>
+				<div class="spin-leaf"></div>
+				<div class="spin-leaf"></div>
+				<div class="spin-leaf"></div>
+			</div>
+		</div>
+		<div class="view view-menu">
+			<div class="navbar">
+				<div class="navbar-back nav-back"></div>
+				<div class="navbar-title">路由器</div>
+			</div>
+			<div class="content">
+				<div class="table-cell pressed-bg">关于</div>
+				<div class="table-cell pressed-bg">上传日志</div>
+				<div class="table-cell pressed-bg">重启进入安全模式</div>
+				<div class="table-cell pressed-bg">重启</div>
+			</div>
+		</div>
+		<div class="view view-launcher">
+			<div class="launcher-apps-scroller">
+				<!-- <div class="launcher-app nav"></div> -->
+			</div>
+			<div class="launcher-right-column">
+				<div class="launcher-menu"></div>
+				<div class="launcher-pageControl-up"></div>
+				<div class="launcher-pageControl-down"></div>
+				<div class="launcher-pageControl-scrollbar">
+					<div class="launcher-pageControl-scrollbar-thumb"></div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="view view-networkMonitor">
+			<div class="navbar">
+				<div class="navbar-back nav-back"></div>
+				<div class="navbar-title">网络状态</div>
+			</div>
+			<div class="content">
+				<div class="speedometer-container">
+					<div class="speedometer-download">
+						<div class="speedometer-level"></div>
+						<div class="speedometer-type">下载</div>
+						<div class="speedometer-value"></div>
+						<div class="speedometer-unit"></div>
+					</div>
+					<div class="speedometer-upload">
+						<div class="speedometer-level"></div>
+						<div class="speedometer-type">上传</div>
+						<div class="speedometer-value"></div>
+						<div class="speedometer-unit"></div>
+					</div>
+				</div>
+				<div class="footer">
+					<div class="internet-status">互联网连接正常</div><!-- 互联网连接正常 -->
+					<div class="devices-number">8个设备</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="view view-devices">
+			<div class="navbar">
+				<div class="navbar-back nav-back"></div>
+				<div class="navbar-tabbar">
+					<div class="tab tab-white-list">已连接(3)</div>
+					<div class="tab tab-black-list">黑名单(3)</div>
+					<div class="tab-selected-underline"></div>
+				</div>
+			</div>
+			<div class="content white-list">
+				<div class="scroller-content white-list-scroll">
+					<!-- <div class="table-cell"></div> -->
+				</div>
+			</div>
+			<div class="content black-list">
+				<div class="scroller-content black-list-scroll">
+					<!-- <div class="table-cell"></div> -->
+				</div>
+			</div>
+		</div>
+
+		<div class="view view-device-detail">
+			<div class="navbar">
+				<div class="navbar-back nav-back"></div>
+				<div class="navbar-title"></div><!-- 网络设置 -->
+			</div>
+			<div class="content">
+				<div class="table-cell">
+					<div class="table-cell-title">IP地址</div>
+					<div class="table-cell-content ip">192.168.18.100</div>
+				</div>
+				<div class="table-cell">
+					<div class="table-cell-title">MAC地址</div>
+					<div class="table-cell-content mac">14:10:9F:E5:FF:EF</div>
+				</div>
+				<div class="table-cell">
+					<div class="table-cell-title">当前速度</div>
+					<div class="table-cell-content mac">0KB/s 0KB/s</div>
+				</div>
+				<div class="table-cell block pressed-bg">加入黑名单</div>
+			</div>
+		</div>
+
+		<div class="view view-networkConfig">
+			<div class="navbar">
+				<div class="navbar-back nav-back"></div>
+				<div class="navbar-title"></div><!-- 网络设置 -->
+			</div>
+			<div class="content">
+				<div class="table-cell">
+					<div class="bullet"></div>
+					<div class="bullet-dotted-line"></div>
+					<div class="view-networkConfig_internet"></div><!-- 互联网设置 -->
+					<div class="sub-text view-networkConfig-internet-statue"></div><!-- 已连接到互联网 -->
+				</div>
+				<div class="table-cell">
+					<div class="bullet"></div>
+					<div class="bullet-dotted-line"></div>
+					<div class="view-networkConfig_wifi"></div><!-- 无线网络设置 -->
+					<div class="sub-text view-networkConfig-wifi-statue"></div><!-- modou_21214 -->
+				</div>
+				<div class="table-cell">
+					<div class="bullet"></div>
+					<div class="view-networkConfig_ap"></div><!-- 扩展现有无线网 -->
+					<div class="sub-text view-networkConfig-ap-statue"></div><!-- 未启用 -->
+					<div class="switch view-networkConfig-ap-switch"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="view view-networkConfig-internet">
+			<div class="navbar">
+				<div class="navbar-back nav-back"></div>
+				<div class="navbar-title">互联网设置</div>
+				<div class="navbar-button view-networkConfig-wan-internet-apply">确定</div>
+			</div>
+			<div class="content">
+				<div class="table-cell bg-lightGrey">
+					<div class="segmentedControl">
+						<div class="segmentedControl-cell">动态获取</div>
+						<div class="segmentedControl-cell">拨号连接</div>
+					</div>
+				</div>
+				<div class="segmentedControl-child-wrapper">
+					<div class="segmentedControl-child view-networkConfig-internet-dhcp">
+						<div class="table-cell">
+							<div class="table-cell-title">IP地址</div><div class="table-cell-content">10.0.0.1</div>
+						</div>
+						<div class="table-cell">
+							<div class="table-cell-title">子网掩码</div><div class="table-cell-content">255.255.255.0</div>
+						</div>
+						<div class="table-cell">
+							<div class="table-cell-title">网关</div><div class="table-cell-content">192.168.1.1</div>
+						</div>
+					</div>
+					<div class="segmentedControl-child view-networkConfig-internet-pppoe">
+						<div class="table-cell pppoe-account pressed-bg">
+							<div class="table-cell-title">账号</div><div class="table-cell-content pppoe-account-text"></div>
+						</div>
+						<div class="table-cell pppoe-password pressed-bg">
+							<div class="table-cell-title">密码</div><div class="table-cell-content pppoe-password-text"></div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="view view-networkConfig-wifi">
+			<div class="navbar">
+				<div class="navbar-back nav-back"></div>
+				<div class="navbar-title">无线网络设置</div>
+				<div class="navbar-button" id="view-networkConfig-wan-wifi-apply">确定</div>
+			</div>
+			<div class="content">
+
+				<div class="table-cell">
+					<div class="table-cell-title">无线网络</div>
+					<div class="table-cell-content wifi-switch-statue">已开启</div>
+					<div class="switch wifi-switch"></div>
+				</div>
+
+				<div class="wifi-settings">
+					<div class="table-cell wifi-ssid-cell pressed-bg">
+						<div class="table-cell-title">无线名称</div>
+						<div class="table-cell-content wifi-ssid"></div>
+					</div>
+					<div class="table-cell">
+						<div class="table-cell-title">无线加密</div>
+						<div class="table-cell-content wifi-encrypt-statue">已开启</div>
+						<div class="switch wifi-encrypt-switch"></div>
+					</div>
+					<div class="table-cell wifi-password-cell pressed-bg">
+						<div class="table-cell-title">登录密码</div>
+						<div class="table-cell-content wifi-password">******</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+
+		<div class="view view-wifi-list">
+			<div class="navbar">
+				<div class="navbar-back nav-back"></div>
+				<div class="navbar-title"></div>
+				<div class="navbar-button"></div>
+			</div>
+			<div class="content">
+				<div class="scroller-content"></div>
+			</div>
+		</div>
+
+
+		<div class="view view-keyboard">
+			<div class="navbar">
+				<div class="navbar-back nav-back"></div>
+				<div class="navbar-textfield-placeholder"></div>
+				<div class="navbar-textfield"></div>
+				<div class="navbar-textfield-clear"></div>
+				<!-- <div class="navbar-button"></div> -->
+			</div>
+			<div class="content lower-case">
+				<div class="row">
+					<div class="keyboard-button letter">Q</div>
+					<div class="keyboard-button letter">W</div>
+					<div class="keyboard-button letter">E</div>
+					<div class="keyboard-button letter">R</div>
+					<div class="keyboard-button letter">T</div>
+					<div class="keyboard-button letter">Y</div>
+					<div class="keyboard-button letter">U</div>
+					<div class="keyboard-button letter">I</div>
+					<div class="keyboard-button letter">O</div>
+					<div class="keyboard-button letter">P</div>
+				</div>
+				<div class="row">
+					<div class="keyboard-button letter">A</div>
+					<div class="keyboard-button letter">S</div>
+					<div class="keyboard-button letter">D</div>
+					<div class="keyboard-button letter">F</div>
+					<div class="keyboard-button letter">G</div>
+					<div class="keyboard-button letter">H</div>
+					<div class="keyboard-button letter">J</div>
+					<div class="keyboard-button letter">K</div>
+					<div class="keyboard-button letter">L</div>
+				</div>
+				<div class="row">
+					<div class="keyboard-button shift shift-normal"></div>
+					<div class="keyboard-button letter">Z</div>
+					<div class="keyboard-button letter">X</div>
+					<div class="keyboard-button letter">C</div>
+					<div class="keyboard-button letter">V</div>
+					<div class="keyboard-button letter">B</div>
+					<div class="keyboard-button letter">N</div>
+					<div class="keyboard-button letter">M</div>
+					<div class="keyboard-button delete"></div>
+				</div>
+				<div class="row row-4">
+					<div class="keyboard-button symbol"></div>
+					<div class="keyboard-button space">空格</div>
+					<div class="keyboard-button enter"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="view view-expertMode">
+			<div class="navbar">
+				<div class="navbar-back nav-back"></div>
+				<div class="navbar-title">极客模式</div>
+				<div class="switch"></div>
+			</div>
+			<div class="content expertMode-off">
+				<div class="expertMode-illustration"></div>
+				<div class="expertMode-description">开启极客模式将允许您使用浏览器对路由器进行高级设置。</div>
+			</div>
+			<div class="content expertMode-on">
+				<div class="expertMode-explorer">
+					<div class="expertMode-explorer-address">
+						<div class="expertMode-explorer-favicon"></div>
+						http://modouwifi.net
+					</div>
+					<div class="expertMode-password-container">
+						<div class="expertMode-password-bullet">密码</div>
+						<div class="expertMode-password">1231231321</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class=" view view-twoFactorAuth">
+			<div class="navbar">
+				<div class="navbar-back nav-back"></div>
+				<div class="navbar-title">防蹭网</div>
+				<div class="switch"></div>
+			</div>
+
+			<div class="content twoFactorAuth-off">
+				<div class="twoFactorAuth-illustration"></div>
+				<div class="twoFactorAuth-description">开启防蹭网，让每一个接入互联网的设备都必须经过您的批准。</div>
+			</div>
+
+			<div class="content twoFactorAuth-on">
+				<div class="twoFactorAuth-illustration"></div>
+				<div class="twoFactorAuth-description">防蹭网已开启，设备接入互联网须要您的批准。</div>
+			</div>
+
+		</div>
+
+
+		<div class="view view-wirelessNetwork">
+			<div class="navbar">
+				<div class="navbar-back nav-back"></div>
+				<div class="navbar-title">无线网络</div>
+				<div class="switch"></div>
+			</div>
+			<div class="content wirelessNetwork-off">
+				<div class="wirelessNetwork-illustration"></div>
+				<div class="wirelessNetwork-description">无线网络就是好</div>
+			</div>
+			<div class="content wirelessNetwork-on">
+				<div class="table-cell">
+					<div class="table-cell-title">无线名称</div>
+					<div class="table-cell-content">fuckGFW</div>
+				</div>
+				<div class="table-cell">
+					<div class="table-cell-title">无线加密</div>
+					<div class="table-cell-content wifi-encrypt-text"></div>
+					<div class="switch wifi-encrypt-switch"></div>
+				</div>
+				<div class="table-cell wifi-password">
+					<div class="table-cell-title">登录密码</div>
+					<div class="table-cell-content">12345678</div>
+				</div>
+				<div class="table-cell chevron">
+					高级设置
+				</div>
+			</div>
+		</div>
+
+
+		<div class="view view-gameAccelerater">
+			<div class="navbar">
+				<div class="navbar-back nav-back"></div>
+				<div class="navbar-title">游戏模式</div>
+				<div class="switch"></div>
+			</div>
+			<div class="content gameAccelerater-off">
+				<div class="gameAccelerater-illustration"></div>
+				<div class="gameAccelerater-description">
+					开启游戏模式，享受极致流畅的游戏体验。
+				</div>
+			</div>
+			<div class="content gameAccelerater-on">
+				<div class="gameAccelerater-statue <!-- two-lines -->">当前加速游戏</div>
+				<div class="gameAccelerater-gameName">最终幻想 XIII</div>
+
+				<div class="gameAccelerater-footer">
+					<div class="gameAccelerater-score">累计加速 145324 个数据包</div>
+					<div class="gameAccelerater-refresh"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="view view-time">
+			<div class="navbar">
+				<div class="navbar-back nav-back"></div>
+				<div class="navbar-title">时钟</div>
+				<div class="navbar-button"></div>
+			</div>
+			<div class="content">
+				<div class="time-container">
+					<div class="time-number">--:--</div><div class="timeform-mark"></div> <!-- 上午 -->
+				</div>
+			</div>
+		</div>
+
+		<div class="view view-systemUpdate">
+			<div class="navbar">
+				<div class="navbar-back nav-back"></div>
+				<div class="navbar-title">系统更新</div>
+				<div class="navbar-button"></div>
+			</div>
+			<div class="content">
+				<div class="current-version"></div>
+				<div class="checking-statue"></div>
+			</div>
+		</div>
+
+		<div class="view view-systemUpdate-download">
+			<div class="navbar">
+				<div class="navbar-back nav-back"></div>
+				<div class="navbar-title">系统更新</div>
+			</div>
+			<div class="content">
+				<div class="progressbar">
+					<div class="progressbar-label-left">正在下载</div>
+					<div class="progressbar-label-right">1MB/19MB</div>
+					<div class="progressbar-wrapper">
+						<div class="progressbar-value"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="view view-systemUpdate-setup">
+			<div class="progressbar">
+				<div class="progressbar-label-left">升级中</div>
+				<div class="progressbar-label-right">0%</div>
+				<div class="progressbar-wrapper">
+					<div class="progressbar-value"></div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="toolbar">
+
+		<div class="toolbar-button toolbar-reset" data-event={"eventName":"reset"}>
+			reset
+		</div>
+		
+		<div class="toolbar-switch toolbar-internetConnection">
+			网络连接
+			<div class="switch"></div>
+		</div>
+
+
+	</div>
+</body>
+</html>
