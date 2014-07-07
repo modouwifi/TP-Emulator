@@ -8,7 +8,7 @@ var globeColor = {
 
 var globeDuration = 300;
 
-function stateMachine () {
+function stateMachine() {
   var data = {
     "internet_connection"  : "connected",
     "download_speed"       : 16,
@@ -18,7 +18,7 @@ function stateMachine () {
   };
   var ALPHA = 1;
 
-  setInterval (function(){
+  setInterval(function() {
     var prev_download_speed = data.download_speed;
     var prev_upload_speed = data.upload_speed;
 
@@ -27,7 +27,7 @@ function stateMachine () {
       data.download_speed = 0;
     };
 
-    data.upload_speed = Math.random() * data.upload_speed_max/4;
+    data.upload_speed = Math.random() * data.upload_speed_max / 4;
     if (data.upload_speed == NaN) {
       data.upload_speed = 0;
     };
@@ -63,30 +63,30 @@ var TPdata = {
   },
 
   system : {
-    "internet_connection"  : "connected",
-    "AP_wifi_connection"  : "connected",
-    "internet_mode"      : "dhcp",
-    "wifi_switch"      : true,
-    "wifi_ssid"        : "modouwifi",
-    "wifi_encrypt"      : true,
-    "wifi_password"      : "20140605",
-    "AP_mode"        : false,
-    "AP_wifi_ssid"      : "",
-    "AP_wifi_password"    : "",
-    "dhcp_ip"        : "192.168.1.1",
-    "dhcp_subnet_mask"    : "255.255.255.0",
-    "dhcp_gateway"      : "10.0.0.1",
-    "pppoe_account"      : "modou_pppoe",
-    "pppoe_password"    : "12345678",
-    "internet_mode"      : "dhcp",
-    "twofactorAuth_switch"  : false,
-    "expertMode_switch"    : false,
-    "expertMode_password"  : null,
-    "gameAccelerater_switch": false,
-    "system_version"    : "0.5.20",
+    "internet_connection"    : "connected",
+    "AP_wifi_connection"     : "connected",
+    "internet_mode"          : "dhcp",
+    "wifi_switch"            : true,
+    "wifi_ssid"              : "modouwifi",
+    "wifi_encrypt"           : true,
+    "wifi_password"          : "20140605",
+    "AP_mode"                : false,
+    "AP_wifi_ssid"           : "",
+    "AP_wifi_password"       : "",
+    "dhcp_ip"                : "192.168.1.1",
+    "dhcp_subnet_mask"       : "255.255.255.0",
+    "dhcp_gateway"           : "10.0.0.1",
+    "pppoe_account"          : "modou_pppoe",
+    "pppoe_password"         : "12345678",
+    "internet_mode"          : "dhcp",
+    "twofactorAuth_switch"   : false,
+    "expertMode_switch"      : false,
+    "expertMode_password"    : null,
+    "gameAccelerater_switch" : false,
+    "system_version"         : "0.5.20",
   },
 
-  apps:{
+  apps: {
     networkMonitor: {
       "available"      : true,
     },
@@ -103,19 +103,19 @@ var TPdata = {
       "available"      : true,
     },
     twofactorAuth: {
-      "available"     : true,
+      "available"      : true,
     },
     wirelessNetwork: {
       "available"      : true,
     },
     gameAccelerater: {
       "available"      : true,
-      "statue"      : "none",
-      "score"        : 18321,
+      "statue"         : "none",
+      "score"          : 65535,
     },
     systemUpdate: {
       "available"      : true,
-      "newVersion"    : true,
+      "newVersion"     : true,
     }
   },
   wifi_list: ["modou-001", "modou-002", "modou-003", "modou-004", "modou-005", "modou-006", "modou-007", "modou-008"],
@@ -124,64 +124,64 @@ var TPdata = {
     whiteList: [
       {
         "name"  : "Dzs-MacbookPro",
-        "ip"  : "10.0.0.2",
+        "ip"    : "10.0.0.2",
       },
 
       {
         "name"  : "Payohone-s-iPad",
-        "ip"  : "10.0.0.3",
+        "ip"    : "10.0.0.3",
       },
 
       {
         "name"  : "Payohone-s-iPhone",
-        "ip"  : "10.0.0.4",
+        "ip"    : "10.0.0.4",
       },
 
       {
         "name"  : "Amberde-iPad",
-        "ip"  : "10.0.0.5",
+        "ip"    : "10.0.0.5",
       }
     ],
 
     blackList: [
       {
         "name"  : "Dzs-MacbookPro",
-        "ip"  : "10.0.0.2",
+        "ip"    : "10.0.0.2",
       },
 
       {
         "name"  : "Payohone-s-iPad",
-        "ip"  : "10.0.0.3",
+        "ip"    : "10.0.0.3",
       },
 
       {
         "name"  : "Payohone-s-iPhone",
-        "ip"  : "10.0.0.4",
+        "ip"    : "10.0.0.4",
       },
 
       {
         "name"  : "Amberde-iPad",
-        "ip"  : "10.0.0.5",
+        "ip"    : "10.0.0.5",
       },
 
       {
         "name"  : "Dzs-MacbookPro",
-        "ip"  : "10.0.0.2",
+        "ip"    : "10.0.0.2",
       },
 
       {
         "name"  : "Payohone-s-iPad",
-        "ip"  : "10.0.0.3",
+        "ip"    : "10.0.0.3",
       },
 
       {
         "name"  : "Payohone-s-iPhone",
-        "ip"  : "10.0.0.4",
+        "ip"    : "10.0.0.4",
       },
 
       {
         "name"  : "Amberde-iPad",
-        "ip"  : "10.0.0.5",
+        "ip"    : "10.0.0.5",
       }
     ],
   }
@@ -198,7 +198,7 @@ $(document).ready(function () {
   var launcherPageNum = 0;
 
   var viewController = {
-    guide: function () {;
+    guide: function() {
       var $view = viewLoad(".view-cableCheck", "cable_check");
       var $navbar = control.navbar($view);
       $navbar.button.click(function () {
@@ -215,7 +215,7 @@ $(document).ready(function () {
         var $alert = control.alert([
           {
             "text": "拨号上网",
-            "click": function () {
+            "click": function() {
               clearTimeout(alert_wifi_timer);
             }
           },
@@ -265,7 +265,6 @@ $(document).ready(function () {
             $(".boot-wifi-enable-alert").find(".ssid").text(TPdata.system.wifi_ssid);
             $(".boot-wifi-enable-alert").find(".password").text(TPdata.system.wifi_password);
 
-
           },5000)
 
         },5000)
@@ -281,13 +280,13 @@ $(document).ready(function () {
         drillDown("devices")
       })
 
-      var downloadMeter   = speedometer("download");
-      var uploadMeter   = speedometer("upload");
+      var downloadMeter = speedometer("download");
+      var uploadMeter = speedometer("upload");
 
       function speedometer (type) {
         if (type == "download") {
           var smoothedValue = state.download_speed;
-        }else{
+        } else {
           var smoothedValue = state.upload_speed;
         }
 
@@ -298,7 +297,7 @@ $(document).ready(function () {
         var timer = setInterval(function () {
           if (type == "download") {
             smoothedValue = ALPHA * state.download_speed + (1.0 - ALPHA) * smoothedValue;
-          }else{
+          } else {
             smoothedValue = ALPHA * state.upload_speed + (1.0 - ALPHA) * smoothedValue;
           }
 
@@ -306,7 +305,7 @@ $(document).ready(function () {
             resultValue = smoothedValue / 1024;
             resultValue = resultValue.toFixed(1);
             unit = "MB/s";
-          }else{
+          } else {
             resultValue = smoothedValue;
             resultValue = Math.round(smoothedValue);
             unit = "kB/s";
@@ -316,7 +315,7 @@ $(document).ready(function () {
             $view.find(".speedometer-download .speedometer-value").text(resultValue);
             $view.find(".speedometer-download .speedometer-unit").text(unit);
             // $view.find(".speedometer-download .speedometer-level").css("height", smoothedValue / state.download_speed_max * 100 + "%");
-          }else{
+          } else {
             $view.find(".speedometer-upload .speedometer-value").text(resultValue);
             $view.find(".speedometer-upload .speedometer-unit").text(unit);
             // $view.find(".speedometer-upload .speedometer-level").css("height", smoothedValue / state.upload_speed_max * 100 + "%");
@@ -411,7 +410,7 @@ $(document).ready(function () {
                 "transform"    : "translate3d(0," + -(launcherPageNum * 236) + "px,0)",
                 "transition"  : "0s ease-in-out",
               })
-            }else{
+            } else {
               $view.find(".launcher-apps-scroller").children().css({
                 "transform"    : "translate3d(0," + -(launcherPageNum * 236) + "px,0)",
                 "transition"  : "0.3s ease-in-out",
@@ -477,7 +476,7 @@ $(document).ready(function () {
         $tab.eq(0).addClass('tab-selected');
         $view.find(".black-list").hide();
 
-      }else if(viewData.tab == "black_list") {
+      } else if(viewData.tab == "black_list") {
 
         $tab.eq(1).addClass('tab-selected');
         $view.find(".white-list").hide();
@@ -496,7 +495,7 @@ $(document).ready(function () {
           });
           $view.find(".black-list").hide();
           $view.find(".white-list").show();
-        }else{
+        } else {
           tab_underline.css({
             "transform": "translate3d(100%,0,0)",
             "transition": "0.3s ease-out"
@@ -563,7 +562,6 @@ $(document).ready(function () {
 
       if (TPdata.system.AP_mode == false) {
 
-
         $view.find(".view-networkConfig_internet").text("互联网设置")
         $view.find(".view-networkConfig_wifi").text("无线网络设置")
         $view.find(".view-networkConfig_ap").text("扩展现有无线网")
@@ -590,10 +588,9 @@ $(document).ready(function () {
 
         }
 
-        else{
+        else {
           $view.find(".view-networkConfig-internet-statue").text("")
         }
-
 
         if (TPdata.system.wifi_switch == true) {
 
@@ -623,7 +620,6 @@ $(document).ready(function () {
           drillDown("networkConfig_ap_wifi")
         })
 
-
       }else if (TPdata.system.AP_mode == true) {
 
         $view.find(".view-networkConfig_internet").text("互联网")
@@ -650,12 +646,9 @@ $(document).ready(function () {
           $view.find(".view-networkConfig-internet-statue").text("没有连接")
         }
 
-        else{
+        else {
           $view.find(".view-networkConfig-internet-statue").text("")
         }
-
-
-
 
         if (TPdata.system.AP_wifi_connection == "connected") {
           $view.find(".view-networkConfig-wifi-statue").text("已连接")
@@ -671,7 +664,7 @@ $(document).ready(function () {
           $view.find(".view-networkConfig-wifi-statue").text("连接失败")
         }
 
-        else{
+        else {
           $view.find(".view-networkConfig-wifi-statue").text("")
         }
 
@@ -741,7 +734,7 @@ $(document).ready(function () {
       $view.find(".navbar-button").click(function () {
         if ($(".segmentedControl_selected").index() == 0) {
           TPdata.system.internet_mode = "dhcp";
-        }else if($(".segmentedControl_selected").index() == 1){
+        } else if($(".segmentedControl_selected").index() == 1) {
           TPdata.system.internet_mode = "pppoe";
           TPdata.system.pppoe_account = $view.find(".pppoe-account-text").text();
           TPdata.system.pppoe_password = $view.find(".pppoe-password-text").text();
@@ -761,7 +754,7 @@ $(document).ready(function () {
         var wifi_switch = control.switch($view.find(".wifi-switch"), true);
         wifi_setting_section.show();
         $view.find(".wifi-switch-statue").text("已开启");
-      }else{
+      }else {
         var wifi_switch = control.switch($view.find(".wifi-switch"), false);
         wifi_setting_section.hide();
         $view.find(".wifi-switch-statue").text("已关闭");
@@ -769,7 +762,6 @@ $(document).ready(function () {
 
       $view.find(".wifi-ssid").text(TPdata.system.wifi_ssid);
       $view.find(".wifi-password").text(TPdata.system.wifi_password);
-
 
       wifi_switch.on("on", function () {
         wifi_setting_section.fadeIn(globeDuration);
@@ -784,7 +776,7 @@ $(document).ready(function () {
       if(TPdata.system.wifi_encrypt == true) {
         var wifi_encrypt_switch = control.switch($view.find(".wifi-encrypt-switch"), true);
         $view.find(".wifi-encrypt-statue").text("已开启");
-      }else{
+      }else {
         var wifi_encrypt_switch = control.switch($view.find(".wifi-encrypt-switch"), false);
         $view.find(".wifi-encrypt-statue").text("已关闭");
         $view.find(".wifi-encrypt-cell").hide();
@@ -1118,7 +1110,6 @@ $(document).ready(function () {
 
       $alert.content.text("这将还原所有设置和用户数据，确认清除？");
       $alert.title.text("恢复出厂设置");
-
     },
 
     time: function() {
@@ -1127,16 +1118,15 @@ $(document).ready(function () {
 
       if (TPdata.system.internet_connection == "connected") {
         dateUpdate ();
-        var timer = setInterval (function (){
+        var timer = setInterval (function () {
           dateUpdate ();
         },1000)
-      }else{
+      }else {
         $view.find(".navbar-title").text("时钟");
         $view.find(".time-number").text("--:--");
         $view.find(".timeform-mark").text("");
         var time_marginLeft = ($view.width() - $view.find(".time-number").width()) / 2;
         $view.find(".time-number").css("left",time_marginLeft + "px")
-
       }
 
       function dateUpdate () {
@@ -1152,7 +1142,7 @@ $(document).ready(function () {
           date_minutes = "0" + date_minutes;
         };
 
-          switch(date_day){
+          switch(date_day) {
             case 0 :
               date_day = "星期日";
               break;
@@ -1326,7 +1316,7 @@ $(document).ready(function () {
         setTimeout(function () {
           elem.addClass("switch-transition");
         })
-      }else if(statue == false){
+      }else if(statue == false) {
         elem.removeClass("switch-on").addClass("switch-off");
         setTimeout(function () {
           elem.addClass("switch-transition");
@@ -1344,9 +1334,8 @@ $(document).ready(function () {
         }else if($(this).hasClass("switch-on")) {
           elem.switchOff()
 
-        }else if ($(this).hasClass("switch-off")){
+        }else if ($(this).hasClass("switch-off")) {
           elem.switchOn()
-
         }
 
       });
@@ -1398,7 +1387,6 @@ $(document).ready(function () {
         if(scrollView.contentHeight <= scrollView.viewHeight) {
           scrollView.find(".scroller-pageController").hide()
         }
-
 
         scrollView.thumb.height(scrollView.viewHeight / scrollView.contentHeight * 100 + "%");
         scrollView.scrollTopMax = scrollView.contentHeight - scrollView.viewHeight;
@@ -1492,7 +1480,7 @@ $(document).ready(function () {
       }
     },
 
-    "keyboard" : function () {
+    "keyboard" : function() {
       var $keyboard = viewLoad(".view-keyboard", "keyboard");
 
       $keyboard.placeholder = $keyboard.find(".navbar-textfield-placeholder").text("密码: ");
@@ -1504,23 +1492,22 @@ $(document).ready(function () {
         $(document).off("keypress");
       });
 
-
       $keyboard.textfield = $keyboard.find(".navbar-textfield");
       $keyboard.textfield.text = function(aug) {
-        if(aug != undefined){
+        if(aug != undefined) {
           $keyboard.textfield[0].innerHTML = aug;
           placeholder_switch();
-        }else{
+        }else {
           return $keyboard.textfield[0].innerHTML;
         }
       }
 
       placeholder_switch();
 
-      function placeholder_switch(){
-        if($keyboard.textfield.text() == ""){
+      function placeholder_switch() {
+        if($keyboard.textfield.text() == "") {
           $keyboard.placeholder.show();
-        }else{
+        }else {
           $keyboard.placeholder.hide();
         }
       }
@@ -1535,7 +1522,7 @@ $(document).ready(function () {
           $keyboard.content.removeClass("lower-case");
           btn_shift.removeClass('shift-normal').addClass('shift-active');
 
-        }else if (upper_case == true){
+        }else if (upper_case == true) {
           upper_case = "shiftLock";
           btn_shift.removeClass('shift-active').addClass('shift-lock');
 
@@ -1547,7 +1534,7 @@ $(document).ready(function () {
         }
       })
 
-      $keyboard.find(".letter").click(function(){
+      $keyboard.find(".letter").click(function() {
         if (upper_case == false) {
           inputChar(this.innerHTML.toLowerCase())
         }else{
@@ -1600,7 +1587,7 @@ $(document).ready(function () {
       return $keyboard;
     },
 
-    "progressbar": function (elem){
+    "progressbar": function (elem) {
       elem.value = function (percent) {
         elem.find(".progressbar-value").css("width",percent * 100 + "%");
       }
@@ -1640,7 +1627,7 @@ $(document).ready(function () {
         };
       },
 
-      fadeIn :  function (elem) {
+      fadeIn : function (elem) {
         elem.css({
           "opacity": "0",
           "transition":"0"
@@ -1700,39 +1687,39 @@ $(document).ready(function () {
 
   var currentPage;
 
-  function viewLoad (elem,type) {
-    if(type == "alert") {
+  function viewLoad (elem, type) {
+    if (type == "alert") {
       var $view = $(".view-collection").find(elem).clone().appendTo(viewContainer).show();
       $view.css({
         "opacity"  : "0",
       });
 
       $view.find(".alert-container").css({
-        "transform": "scale(0.9)",
+        "transform" : "scale(0.9)",
       });
 
       setTimeout(function () {
         $view.css({
-          "opacity"  : "1",
-          "transition": "0.3s ease-out",
+          "opacity"    : "1",
+          "transition" : "0.3s ease-out",
         })
         $view.find(".alert-container").css({
-          "transform": "",
-          "transition": "0.3s ease-out",
+          "transform"  : "",
+          "transition" : "0.3s ease-out",
         });
       })
-    }else if (type == "keyboard"){
+    } else if (type == "keyboard") {
       var $view = $(".view-collection").find(elem).clone().appendTo(viewContainer).show();
       setTimeout(function () {
         control.transitions.fadeOut(currentPage);
         control.transitions.slideIn($view);
       })
-    }else if (type == "cable_check"){
+    } else if (type == "cable_check") {
       var $view = $(".view-collection").find(elem).clone().appendTo(viewContainer).show();
       setTimeout(function () {
         control.transitions.fadeIn($view);
       })
-    }else{
+    } else {
       var $view = $(".view-collection").find(elem).clone().appendTo(viewContainer).show();
       currentPage = $view;
     }
@@ -1743,7 +1730,7 @@ $(document).ready(function () {
   function viewRefresh (target) {
     if (target == undefined) {
       // viewContainer.html("");
-      if(viewContainer.children().length != 0){
+      if (viewContainer.children().length != 0) {
         viewContainer.children().fadeOut(globeDuration, function () {
           $(this).remove();
         })
@@ -1751,7 +1738,7 @@ $(document).ready(function () {
 
       viewController[navStack[navStack.length-1]]();
 
-    }else {
+    } else {
       navStack.pop();
       drillDown(target);
     }
@@ -1766,21 +1753,20 @@ $(document).ready(function () {
 
     var prevPage = currentPage;
 
-    if(prevPage){
+    if (prevPage) {
       control.transitions.fadeOut(prevPage, true)
     }
 
     viewController[navTarget](viewData);
 
-    if(navTarget == "launcher"){
+    if (navTarget == "launcher") {
       control.transitions.fadeIn(currentPage);
-    }else{
+    } else {
       control.transitions.slideIn(currentPage);
     }
 
     navStack.push(navTarget);
   }
-
 
   function navStackPop (steps) {
     if (steps == undefined) {
@@ -1792,7 +1778,6 @@ $(document).ready(function () {
     }
 
     $("#screen").trigger("viewChange");
-
 
     var prevPage = currentPage;
 
@@ -1820,9 +1805,9 @@ $(document).ready(function () {
           var $view = viewLoad(".view-boot");
 
           setTimeout(function () {
-            if(TPdata.boot.first_boot == true) {
+            if (TPdata.boot.first_boot == true) {
               viewController.guide();
-            }else{
+            } else {
               control.transitions.fadeOut($view,true)
               drillDown("launcher");
             }
@@ -1855,7 +1840,6 @@ $(document).ready(function () {
   $("#screen").on("systemEvent_reset", function () {
     viewController.resetConfirmAlert();
   })
-
 
   function segmentedController (elem_control, elem_child, nth_child) {
 
