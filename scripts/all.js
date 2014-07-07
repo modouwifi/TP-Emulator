@@ -11,10 +11,10 @@ var globeDuration = 300;
 function stateMachine () {
   var data = {
     "internet_connection"  : "connected",
-    "download_speed"    : 16,
-    "upload_speed"      : 16,
-    "download_speed_max"  : 512,
-    "upload_speed_max"    : 256,
+    "download_speed"       : 16,
+    "upload_speed"         : 16,
+    "download_speed_max"   : 512,
+    "upload_speed_max"     : 256,
   };
   var ALPHA = 1;
 
@@ -50,15 +50,15 @@ var TPdata = {
   launcher: {
     "apps_list": ["networkMonitor", "devices", "time", "networkConfig", "expertMode", "twofactorAuth", "systemUpdate", "gameAccelerater"],
     "apps_name": {
-      "networkMonitor"  : "状态",
-      "devices"      : "设备列表",
-      "time"        : "时钟",
+      "networkMonitor"   : "状态",
+      "devices"          : "设备列表",
+      "time"             : "时钟",
       "networkConfig"    : "网络设置",
-      "expertMode"    : "极客模式",
+      "expertMode"       : "极客模式",
       "twofactorAuth"    : "防蹭网",
       "wirelessNetwork"  : "无线网络",
       "gameAccelerater"  : "游戏模式",
-      "systemUpdate"    : "系统升级",
+      "systemUpdate"     : "系统升级",
     },
   },
 
