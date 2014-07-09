@@ -1210,7 +1210,7 @@ $(document).ready(function() {
       setTimeout(function() {
         if(TPdata.system.internet_connection != "connected") {
           $view.find(".checking-statue").text("无法获取最新版本，请检查网络连接");
-        } else if(TPdata.apps.systemUpdate.newVersion == true){
+        } else if(TPdata.apps.systemUpdate.newVersion == true) {
           $view.find(".checking-statue").text("发现新版本");
           $navbar.button.show();
         } else {
@@ -1557,7 +1557,7 @@ $(document).ready(function() {
       function inputChar(char) {
         $keyboard.textfield[0].innerHTML += char;
         placeholder_switch();
-        if (upper_case == "shiftLock"){
+        if (upper_case == "shiftLock") {
           return;
         } else {
           upper_case = false;
