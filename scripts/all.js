@@ -1173,7 +1173,7 @@ $(document).ready(function() {
           if (date_hours > 12) {
             date_hours -= 12;
             var timeform_mark = "下午";
-          }else{
+          }else {
             var timeform_mark = "上午";
           }
 
@@ -1186,7 +1186,7 @@ $(document).ready(function() {
           var timeform_Left = ($view.width() - time_width) / 2 + time_width;
           $view.find(".timeform-mark").css("left",timeform_Left + "px")
 
-        }else{
+        }else {
           var time_marginLeft = ($view.width() - time_width) / 2;
         }
 
@@ -1213,7 +1213,7 @@ $(document).ready(function() {
         }else if(TPdata.apps.systemUpdate.newVersion == true){
           $view.find(".checking-statue").text("发现新版本");
           $navbar.button.show();
-        }else{
+        }else {
           $view.find(".checking-statue").text("已升级到最新版本");
         }
       },3000)
@@ -1390,7 +1390,7 @@ $(document).ready(function() {
         scrollView.up = function() {
           if (scrollView.scroller.scrollTop() - scrollView.step <= 0) {
             targetScroll = 0;
-          }else{
+          }else {
             targetScroll = scrollView.scroller.scrollTop() - scrollView.step;
           }
 
@@ -1401,7 +1401,7 @@ $(document).ready(function() {
         scrollView.down = function() {
           if (scrollView.scroller.scrollTop() + scrollView.step >= scrollView.scrollTopMax) {
             targetScroll = scrollView.scrollTopMax;
-          }else{
+          }else {
             targetScroll = scrollView.scroller.scrollTop() + scrollView.step;
           }
 
@@ -1531,7 +1531,7 @@ $(document).ready(function() {
       $keyboard.find(".letter").click(function() {
         if (upper_case == false) {
           inputChar(this.innerHTML.toLowerCase())
-        }else{
+        }else {
           inputChar(this.innerHTML.toUpperCase())
         }
       })
@@ -1559,7 +1559,7 @@ $(document).ready(function() {
         placeholder_switch();
         if (upper_case == "shiftLock"){
           return;
-        }else{
+        }else {
           upper_case = false;
           $keyboard.content.addClass("lower-case");
           btn_shift.removeClass('shift-active').addClass('shift-normal');
@@ -1664,7 +1664,7 @@ $(document).ready(function() {
 
       if (TPdata.system.internet_connection == "connected") {
         var internetConnection_switch = control.switch($(".toolbar-internetConnection .switch"),true,true)
-      }else{
+      }else {
         var internetConnection_switch = control.switch($(".toolbar-internetConnection .switch"),true,true)
       }
 
