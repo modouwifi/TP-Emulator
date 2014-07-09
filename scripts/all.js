@@ -1,13 +1,14 @@
 var navStack = new Array();
 
 var globeColor = {
-    blue: "#0080ff",
-    lightGrey: "#ddd",
-    grey: "#999"
-  }
+  blue:        "#0080ff",
+  lightGrey:   "#ddd",
+  grey:        "#999"
+}
 
 var globeDuration = 300;
 
+// internet connection speed state machine
 function stateMachine() {
   var data = {
     "internet_connection"  : "connected",
@@ -42,8 +43,9 @@ function stateMachine() {
 
 var state = stateMachine();
 
+// router data model
 var TPdata = {
-  boot:{
+  boot: {
     "first_boot" : true,
   },
 
@@ -124,73 +126,73 @@ var TPdata = {
     whiteList: [
       {
         "name"  : "Dzs-MacbookPro",
-        "ip"    : "10.0.0.2",
+        "mac"   : "32:00:18:76:c9:33",
       },
 
       {
         "name"  : "Payohone-s-iPad",
-        "ip"    : "10.0.0.3",
+        "mac"   : "32:00:18:76:c9:34",
       },
 
       {
         "name"  : "Payohone-s-iPhone",
-        "ip"    : "10.0.0.4",
+        "mac"   : "32:00:18:76:c9:35",
       },
 
       {
         "name"  : "Amberde-iPad",
-        "ip"    : "10.0.0.5",
+        "mac"   : "32:00:18:76:c9:36",
       }
     ],
 
     blackList: [
       {
         "name"  : "Dzs-MacbookPro",
-        "ip"    : "10.0.0.2",
+        "mac"   : "32:00:18:76:c9:37",
       },
 
       {
         "name"  : "Payohone-s-iPad",
-        "ip"    : "10.0.0.3",
+        "mac"   : "32:00:18:76:c9:38",
       },
 
       {
         "name"  : "Payohone-s-iPhone",
-        "ip"    : "10.0.0.4",
+        "mac"   : "32:00:18:76:c9:39",
       },
 
       {
         "name"  : "Amberde-iPad",
-        "ip"    : "10.0.0.5",
+        "mac"   : "32:00:18:76:c9:40",
       },
 
       {
         "name"  : "Dzs-MacbookPro",
-        "ip"    : "10.0.0.2",
+        "mac"   : "32:00:18:76:c9:41",
       },
 
       {
         "name"  : "Payohone-s-iPad",
-        "ip"    : "10.0.0.3",
+        "mac"   : "32:00:18:76:c9:42",
       },
 
       {
         "name"  : "Payohone-s-iPhone",
-        "ip"    : "10.0.0.4",
+        "mac"   : "32:00:18:76:c9:43",
       },
 
       {
         "name"  : "Amberde-iPad",
-        "ip"    : "10.0.0.5",
+        "mac"   : "32:00:18:76:c9:44",
       }
     ],
   }
-
 }
 
+// default data
 var TPdataBackup = $.extend(true, {}, TPdata);
 
-$(document).ready(function () {
+$(document).ready(function() {
   FastClick.attach(document.body);
   $.fx.interval = 16;
   var screenHeight = $("#screen").height();
@@ -201,8 +203,8 @@ $(document).ready(function () {
     guide: function() {
       var $view = viewLoad(".view-cableCheck", "cable_check");
       var $navbar = control.navbar($view);
-      $navbar.button.click(function () {
-        setTimeout(function () {
+      $navbar.button.click(function() {
+        setTimeout(function() {
           $view.remove();
         })
         drillDown("launcher");
@@ -240,16 +242,16 @@ $(document).ready(function () {
           $alert_wifi.content.text("正在开启无线功能").css("margin-top","-10px");
 
           $(".spin-large").appendTo($alert_wifi.content).show().css("margin-top","-150px");
-          setTimeout(function () {
+          setTimeout(function() {
             var $alert_wifi_enabled = control.alert([
               {
                 "text" :"无线设置",
-                "click":function (){
+                "click":function() {
                 }
               },
               {
                 "text" :"开始使用",
-                "click":function (){
+                "click":function() {
                   control.transitions.fadeOut($("#screen").children(), true);
                   drillDown("launcher");
                 }
@@ -269,21 +271,20 @@ $(document).ready(function () {
 
         },5000)
       }
-
     },
 
-    networkMonitor: function () {
+    networkMonitor: function() {
       var $view = viewLoad(".view-networkMonitor");
       control.navbar($view);
 
-      $view.find(".devices-number").click(function () {
+      $view.find(".devices-number").click(function() {
         drillDown("devices")
       })
 
       var downloadMeter = speedometer("download");
       var uploadMeter = speedometer("upload");
 
-      function speedometer (type) {
+      function speedometer(type) {
         if (type == "download") {
           var smoothedValue = state.download_speed;
         } else {
@@ -294,7 +295,7 @@ $(document).ready(function () {
         var unit;
         var ALPHA = 0.01;
 
-        var timer = setInterval(function () {
+        var timer = setInterval(function() {
           if (type == "download") {
             smoothedValue = ALPHA * state.download_speed + (1.0 - ALPHA) * smoothedValue;
           } else {
@@ -308,7 +309,7 @@ $(document).ready(function () {
           } else {
             resultValue = smoothedValue;
             resultValue = Math.round(smoothedValue);
-            unit = "kB/s";
+            unit = "KB/s";
           }
 
           if (type == "download") {
@@ -323,7 +324,7 @@ $(document).ready(function () {
         }, 600)
 
         var method = {
-          "clear"  : function () {
+          "clear"  : function() {
             clearInterval(timer);
           },
         }
@@ -334,29 +335,28 @@ $(document).ready(function () {
         $view.trigger("stopTimer")
       })
 
-      $view.on("stopTimer", function () {
+      $view.on("stopTimer", function() {
         downloadMeter.clear();
         uploadMeter.clear();
         $view.off("stopTimer");
       });
-
     },
 
-    launcher: function () {
+    launcher: function() {
       var $view = viewLoad(".view-launcher")
 
       var apps_list = TPdata.launcher.apps_list;
       for (var i = 0 ; i < Math.ceil(apps_list.length / 4) * 4; i++) {
         $view.find(".launcher-apps-scroller").append("<div class='launcher-app'></div>");
        };
-      $view.find(".launcher-app").each(function (i) {
+      $view.find(".launcher-app").each(function(i) {
         console.log(this);
         $(this).click(function() {
           console.log('click')
         });
         $(this).addClass("launcher-app-" + apps_list[i])
           .text(TPdata.launcher.apps_name[apps_list[i]])
-          .click(function () {
+          .click(function() {
 
             if (TPdata.apps[apps_list[i]].available == true) {
               drillDown(apps_list[i])
@@ -364,38 +364,38 @@ $(document).ready(function () {
             };
           })
       })
-      $view.find(".launcher-menu").click(function () {
+      $view.find(".launcher-menu").click(function() {
         drillDown("launcherMenu")
       })
 
-      $view.find(".launcher-pageControl-up").click(function () {
+      $view.find(".launcher-pageControl-up").click(function() {
         launcherPageControl().up()
       });
 
-      $view.find(".launcher-pageControl-down").click(function () {
+      $view.find(".launcher-pageControl-down").click(function() {
         launcherPageControl().down()
       });
 
       launcherPageControl().scrollControl(false);
 
-      function launcherPageControl () {
+      function launcherPageControl() {
         var totalPageNumber = Math.ceil($view.find(".launcher-app").length / 4);
         var method = {
-          up: function () {
+          up: function() {
             if (launcherPageNum < 1) {
               return;
             }
             launcherPageNum--;
             method.scrollControl();
           },
-          down: function () {
+          down: function() {
             if (launcherPageNum >= totalPageNumber -1) {
               return;
             }
             launcherPageNum++;
             method.scrollControl();
           },
-          scrollControl: function (if_animation) {
+          scrollControl: function(if_animation) {
             var scrollbarHeight = $view.find(".launcher-pageControl-scrollbar").height();
             var scrollbarThumbHeight = scrollbarHeight / totalPageNumber;
             var scrollbarThumbTop = scrollbarThumbHeight * (launcherPageNum);
@@ -423,12 +423,12 @@ $(document).ready(function () {
       }
     },
 
-    launcherMenu : function () {
+    launcherMenu: function() {
       var $view = viewLoad(".view-menu");
       control.navbar($view);
     },
 
-    devices: function (viewData) {
+    devices: function(viewData) {
       var $view = viewLoad(".view-devices");
       var $navbar = control.navbar($view);
       var $tab = $navbar.find(".tab");
@@ -437,7 +437,6 @@ $(document).ready(function () {
       var $white_list = $view.find(".white-list-scroll");
       var $black_list = $view.find(".black-list-scroll");
 
-      loadWhiteList();
       function loadWhiteList() {
         $white_list.children().remove();
         for (n in TPdata.devices.whiteList) {
@@ -445,12 +444,13 @@ $(document).ready(function () {
         };
 
         $(".tab-white-list").text("已连接(" + TPdata.devices.whiteList.length + ")");
-        $white_list.find(".table-cell").click(function () {
+        $white_list.find(".table-cell").click(function() {
           drillDown("deviceDetail", $(this).index())
         })
       }
 
-      loadBlackList();
+      loadWhiteList();
+
       function loadBlackList() {
         $black_list.children().remove();
         for (n in TPdata.devices.blackList) {
@@ -461,6 +461,8 @@ $(document).ready(function () {
 
         blackListClick();
       }
+
+      loadBlackList();
 
       var scrollView_whiteList = control.scroll($white_list);
       var scrollView_blackList = control.scroll($black_list);
@@ -485,7 +487,7 @@ $(document).ready(function () {
         });
       }
 
-      $tab.click(function () {
+      $tab.click(function() {
         $tab.removeClass("tab-selected");
         $(this).addClass("tab-selected");
         if($(this).index() == 0) {
@@ -507,14 +509,14 @@ $(document).ready(function () {
 
       function blackListClick() {
 
-        $black_list.find(".table-cell").click(function () {
+        $black_list.find(".table-cell").click(function() {
           var thisCell = $(this);
           var thisIndex = thisCell.index();
           var $alert = control.alert([
-            {"text": "取消", "click": function () {
+            {"text": "取消", "click": function() {
               $alert.close();
             }},
-            {"text": "删除", "click": function () {
+            {"text": "删除", "click": function() {
               TPdata.devices.blackList.splice(thisIndex,1);
               loadBlackList();
               scrollView_blackList.refresh();
@@ -529,12 +531,12 @@ $(document).ready(function () {
       }
     },
 
-    deviceDetail: function (n) {
+    deviceDetail: function(n) {
       var $view = viewLoad(".view-device-detail");
       var $navbar = control.navbar($view);
       $navbar.title.text(TPdata.devices.whiteList[n].name);
 
-      $view.find(".block").click(function () {
+      $view.find(".block").click(function() {
         var $alert = control.alert([
           {text:"取消", click: function() {
             $alert.close()
@@ -553,7 +555,7 @@ $(document).ready(function () {
       })
     },
 
-    networkConfig: function () { //网络设置
+    networkConfig: function() { //网络设置
       var $view = viewLoad(".view-networkConfig")
       control.navbar($view);
 
@@ -604,10 +606,10 @@ $(document).ready(function () {
 
         }
 
-        $view.find(".table-cell:nth-child(1)").click(function () {
+        $view.find(".table-cell:nth-child(1)").click(function() {
           drillDown("networkConfig_internet");
         });
-        $view.find(".table-cell:nth-child(2)").click(function () {
+        $view.find(".table-cell:nth-child(2)").click(function() {
           drillDown("networkConfig_wifi");
         })
         $view.find(".bullet").eq(2).addClass("bullet-ap-grey");
@@ -616,7 +618,7 @@ $(document).ready(function () {
 
         var APswitch = control.switch($view.find(".switch"), false, false);
 
-        APswitch.on("switch-click", function () {
+        APswitch.on("switch-click", function() {
           drillDown("networkConfig_ap_wifi")
         })
 
@@ -626,7 +628,6 @@ $(document).ready(function () {
         $view.find(".view-networkConfig_wifi").text(TPdata.system.AP_wifi_ssid)
         $view.find(".view-networkConfig_ap").text("扩展现有无线网")
         $view.find(".table-cell:nth-child(2)").addClass("chevron")
-
 
         if (TPdata.system.internet_connection == "connected") {
           $view.find(".view-networkConfig-internet-statue").text("已连接")
@@ -673,14 +674,13 @@ $(document).ready(function () {
         $view.find(".view-networkConfig-ap-statue").text("已启用")
 
         var APswitch = control.switch($view.find(".switch"), true, false);
-        APswitch.on("switch-click", function () {
+        APswitch.on("switch-click", function() {
           modalViewController("networkConfig_ap_close_alert");
         })
       }
-
     },
 
-    networkConfig_internet: function () {
+    networkConfig_internet: function() {
       var $view = viewLoad(".view-networkConfig-internet")
       control.navbar($view);
 
@@ -697,7 +697,7 @@ $(document).ready(function () {
 
       };
 
-      $(".segmentedControl-cell").click(function () {
+      $(".segmentedControl-cell").click(function() {
         if ( $(this).hasClass("segmentedControl_selected")) {
           return;
         };
@@ -709,29 +709,29 @@ $(document).ready(function () {
           .eq($(this).index()).show();
       })
 
-      $view.find(".pppoe-account").click(function () {
+      $view.find(".pppoe-account").click(function() {
         var $keyboard_account = control.keyboard();
         $keyboard_account.placeholder.text("账号: ");
         $keyboard_account.textfield.text($view.find(".pppoe-account-text").text());
 
-        $keyboard_account.button.click(function () {
+        $keyboard_account.button.click(function() {
           $view.find(".pppoe-account-text").text($keyboard_account.textfield.text());
           $keyboard_account.close();
         })
       })
 
-      $view.find(".pppoe-password").click(function () {
+      $view.find(".pppoe-password").click(function() {
         var $keyboard_account = control.keyboard();
         $keyboard_account.placeholder.text("密码: ");
         $keyboard_account.textfield.text($view.find(".pppoe-password-text").text());
 
-        $keyboard_account.button.click(function () {
+        $keyboard_account.button.click(function() {
           $view.find(".pppoe-password-text").text($keyboard_account.textfield.text());
           $keyboard_account.close();
         })
       })
 
-      $view.find(".navbar-button").click(function () {
+      $view.find(".navbar-button").click(function() {
         if ($(".segmentedControl_selected").index() == 0) {
           TPdata.system.internet_mode = "dhcp";
         } else if($(".segmentedControl_selected").index() == 1) {
@@ -744,7 +744,7 @@ $(document).ready(function () {
       });
     },
 
-    networkConfig_wifi: function () {
+    networkConfig_wifi: function() {
       var $view = viewLoad(".view-networkConfig-wifi")
       var $navbar = control.navbar($view);
 
@@ -763,12 +763,12 @@ $(document).ready(function () {
       $view.find(".wifi-ssid").text(TPdata.system.wifi_ssid);
       $view.find(".wifi-password").text(TPdata.system.wifi_password);
 
-      wifi_switch.on("on", function () {
+      wifi_switch.on("on", function() {
         wifi_setting_section.fadeIn(globeDuration);
         $view.find(".wifi-switch-statue").text("已开启");
       })
 
-      wifi_switch.on("off", function () {
+      wifi_switch.on("off", function() {
         wifi_setting_section.fadeOut(globeDuration);
         $view.find(".wifi-switch-statue").text("已关闭");
       })
@@ -782,39 +782,39 @@ $(document).ready(function () {
         $view.find(".wifi-encrypt-cell").hide();
       }
 
-      wifi_encrypt_switch.on("on", function () {
+      wifi_encrypt_switch.on("on", function() {
         $view.find(".wifi-encrypt-cell").fadeIn(globeDuration);
         $view.find(".wifi-encrypt-statue").text("已开启");
       });
 
-      wifi_encrypt_switch.on("off", function () {
+      wifi_encrypt_switch.on("off", function() {
         $view.find(".wifi-encrypt-cell").fadeOut(globeDuration);
         $view.find(".wifi-encrypt-statue").text("已关闭");
       })
 
-      $view.find(".wifi-ssid-cell").click(function () {
+      $view.find(".wifi-ssid-cell").click(function() {
         var wifi_ssid_keyboard = control.keyboard();
         wifi_ssid_keyboard.placeholder.text("网络名: ");
         wifi_ssid_keyboard.textfield.text($view.find(".wifi-ssid").text());
 
-        wifi_ssid_keyboard.button.click(function () {
+        wifi_ssid_keyboard.button.click(function() {
           $view.find(".wifi-ssid").text(wifi_ssid_keyboard.textfield.text());
           wifi_ssid_keyboard.close();
         })
       })
 
-      $view.find(".wifi-password-cell").click(function () {
+      $view.find(".wifi-password-cell").click(function() {
         var wifi_password_keyboard = control.keyboard();
         wifi_password_keyboard.placeholder.text("密码: ");
         wifi_password_keyboard.textfield.text($view.find(".wifi-password").text());
 
-        wifi_password_keyboard.button.click(function () {
+        wifi_password_keyboard.button.click(function() {
           $view.find(".wifi-password").text(wifi_password_keyboard.textfield.text());
           wifi_password_keyboard.close();
         })
       })
       console.log($navbar.button)
-      $navbar.button.click(function () {
+      $navbar.button.click(function() {
         TPdata.system.wifi_switch = wifi_switch.statue;
         TPdata.system.wifi_encrypt = wifi_encrypt_switch.statue;
         TPdata.system.wifi_ssid = $view.find(".wifi-ssid").text();
@@ -824,7 +824,7 @@ $(document).ready(function () {
       })
     },
 
-    networkConfig_ap_wifi: function () {
+    networkConfig_ap_wifi: function() {
       var $view = viewLoad(".view-wifi-list")
       control.navbar($view);
 
@@ -841,27 +841,27 @@ $(document).ready(function () {
       var scrollView = control.scroll($view.find(".scroller-content"))
 
       var ssid;
-      $view.find(".table-cell").click(function () {
+      $view.find(".table-cell").click(function() {
         $view.find(".navbar-button").show();
         $view.find(".table-cell").removeClass("selected");
 
         ssid = $(this).addClass("selected").text();
       })
 
-      $view.find(".navbar-button").click(function () {
+      $view.find(".navbar-button").click(function() {
 
         var $keyboard = control.keyboard();
         $keyboard.placeholder = $keyboard.find(".navbar-textfield-placeholder").text("密码: ");
         $keyboard.button = $keyboard.find(".navbar-button").text("确定");
 
-        $keyboard.button.click(function () {
+        $keyboard.button.click(function() {
           var password = $keyboard.textfield.text();
           TPdata.system.AP_wifi_ssid = ssid;
           TPdata.system.AP_wifi_password = password;
           TPdata.system.AP_mode = true;
 
           var $alert = control.alert([
-            {"text": "确定", "click": function () {
+            {"text": "确定", "click": function() {
               $alert.ok();
               navStackPop();
               $keyboard.close();
@@ -875,12 +875,12 @@ $(document).ready(function () {
       });
     },
 
-    networkConfig_ap_close_alert : function (ssid) {
+    networkConfig_ap_close_alert: function(ssid) {
       var $alert = control.alert([
-        {"text": "取消", "click": function () {
+        {"text": "取消", "click": function() {
           $alert.close();
         }},
-        {"text": "关闭", "click": function () {
+        {"text": "关闭", "click": function() {
           $alert.ok();
           TPdata.system.AP_mode = false;
           viewRefresh();
@@ -889,10 +889,9 @@ $(document).ready(function () {
 
       $alert.content.text("这将减小 " + TPdata.system.AP_wifi_ssid + " 的覆盖范围");
       $alert.title.text("关闭无线扩展功能");
-
     },
 
-    expertMode: function () {
+    expertMode: function() {
       var $view = viewLoad(".view-expertMode")
       control.navbar($view);
 
@@ -908,35 +907,34 @@ $(document).ready(function () {
         var $switch = control.switch($view.find(".switch"), true, true);
       }
 
-      $switch.on("on", function () {
+      $switch.on("on", function() {
         $view.find(".expertMode-off").fadeOut(globeDuration);
         $view.find(".expertMode-on").fadeIn(globeDuration);
         TPdata.system.expertMode_switch = true;
         TPdata.system.expertMode_password = parseInt(Math.random()*100000000);
         $view.find(".expertMode-password").text(TPdata.system.expertMode_password);
       })
-      $switch.on("off", function () {
+      $switch.on("off", function() {
         $view.find(".expertMode-off").fadeIn(globeDuration);
         $view.find(".expertMode-on").fadeOut(globeDuration);
         TPdata.system.expertMode_switch = false;
       })
 
-      $view.find(".expertMode-password-container").click(function () {
+      $view.find(".expertMode-password-container").click(function() {
         var $keyboard = control.keyboard();
         $keyboard.placeholder.text("密码: ");
         $keyboard.textfield.text($view.find(".expertMode-password").text());
 
-        $keyboard.button.click(function () {
+        $keyboard.button.click(function() {
           TPdata.system.expertMode_password = $keyboard.textfield.text();
           $view.find(".expertMode-password").text(TPdata.system.expertMode_password);
           $keyboard.close();
         })
 
       })
-
     },
 
-    twofactorAuth: function () {
+    twofactorAuth: function() {
       var $view = viewLoad(".view-twoFactorAuth");
       control.navbar($view);
       if (TPdata.system.twofactorAuth_switch == false) {
@@ -951,18 +949,18 @@ $(document).ready(function () {
 
       }
 
-      $switch.on("on", function () {
+      $switch.on("on", function() {
         $view.find(".twoFactorAuth-on").fadeIn();
         $view.find(".twoFactorAuth-off").fadeOut();
       })
 
-      $switch.on("off", function () {
+      $switch.on("off", function() {
         $view.find(".twoFactorAuth-on").fadeOut();
         $view.find(".twoFactorAuth-off").fadeIn();
       })
     },
 
-    wirelessNetwork: function () {
+    wirelessNetwork: function() {
       var $view = viewLoad(".view-wirelessNetwork")
       control.navbar($view);
 
@@ -975,7 +973,7 @@ $(document).ready(function () {
 
         $view.find(".wirelessNetwork-off").hide()
         var $switch = control.switch($view.find(".navbar .switch"), true, false);
-        $switch.on("switch-click", function () {
+        $switch.on("switch-click", function() {
           wirelessNetwork_close_alert();
         })
       }
@@ -990,30 +988,30 @@ $(document).ready(function () {
         $(".wifi-password").hide();
       }
 
-      $switch.on("on", function () {
+      $switch.on("on", function() {
         $view.find(".wirelessNetwork-off").fadeOut(globeDuration);
         $view.find(".wirelessNetwork-on").fadeIn(globeDuration);
         TPdata.system.wifi_switch = true;
         $switch.available(false);
-        $switch.on("switch-click", function () {
+        $switch.on("switch-click", function() {
           modalViewController("wirelessNetwork_closeAlert", $switch);
         })
       })
 
-      $switch.on("off", function () {
+      $switch.on("off", function() {
         $view.find(".wirelessNetwork-off").fadeIn(globeDuration);
         $view.find(".wirelessNetwork-on").fadeOut(globeDuration);
         TPdata.system.wifi_switch = false;
         $switch.off("switch-click").available(true);
       })
 
-      wifi_encrypt_switch.on("on", function () {
+      wifi_encrypt_switch.on("on", function() {
         $view.find(".wifi-encrypt-text").text("已开启");
         TPdata.system.wifi_encrypt = true;
         $(".wifi-password").show(globeDuration);
       })
 
-      wifi_encrypt_switch.on("off", function () {
+      wifi_encrypt_switch.on("off", function() {
         $view.find(".wifi-encrypt-text").text("已关闭");
         TPdata.system.wifi_encrypt = false;
         $(".wifi-password").hide(globeDuration);
@@ -1025,7 +1023,7 @@ $(document).ready(function () {
           {"text": "取消", "click": function() {
             $alert.close();
           }},
-          {"text": "确定", "click": function () {
+          {"text": "确定", "click": function() {
             TPdata.system.wifi_switch = false;
             $alert.ok();
             $switch.switchOff();
@@ -1038,7 +1036,7 @@ $(document).ready(function () {
       }
     },
 
-    gameAccelerater: function () {
+    gameAccelerater: function() {
       var $view = viewLoad(".view-gameAccelerater");
       control.navbar($view);
 
@@ -1052,13 +1050,13 @@ $(document).ready(function () {
 
       };
 
-      $switch.on("on", function () {
+      $switch.on("on", function() {
         $view.find(".gameAccelerater-off").fadeOut(globeDuration);
         $view.find(".gameAccelerater-on").fadeIn(globeDuration);
         TPdata.system.gameAccelerater_switch = true;
       })
 
-      $switch.on("off", function () {
+      $switch.on("off", function() {
         $view.find(".gameAccelerater-on").fadeOut(globeDuration);
         $view.find(".gameAccelerater-off").fadeIn(globeDuration);
         TPdata.system.gameAccelerater_switch = false;
@@ -1068,16 +1066,16 @@ $(document).ready(function () {
 
       $view.find(".gameAccelerater-score").text("累计加速 " + TPdata.apps.gameAccelerater.score + " 个数据包");
 
-      $view.find(".gameAccelerater-refresh").click(function () {
+      $view.find(".gameAccelerater-refresh").click(function() {
         $view.find(".gameAccelerater-refresh").fadeOut(globeDuration);
         TPdata.apps.gameAccelerater.statue = "none";
         gameAcceleraterStatue ();
-        setTimeout(function () {
+        setTimeout(function() {
           TPdata.apps.gameAccelerater.statue = "accelerating";
           gameAcceleraterStatue ();
           $view.find(".gameAccelerater-refresh").fadeIn(globeDuration);
 
-          setInterval(function () {
+          setInterval(function() {
             TPdata.apps.gameAccelerater.score += 4;
             $view.find(".gameAccelerater-score").text("累计加速 " + TPdata.apps.gameAccelerater.score + " 个数据包");
           },1000)
@@ -1096,13 +1094,13 @@ $(document).ready(function () {
       }
     },
 
-    resetConfirmAlert: function () {
+    resetConfirmAlert: function() {
 
       var $alert = control.alert([
         {"text": "取消", "click": function() {
           $alert.close();
         }},
-        {"text": "确定", "click": function () {
+        {"text": "确定", "click": function() {
           $alert.ok();
           system.reset()
         }},
@@ -1118,7 +1116,7 @@ $(document).ready(function () {
 
       if (TPdata.system.internet_connection == "connected") {
         dateUpdate ();
-        var timer = setInterval (function () {
+        var timer = setInterval (function() {
           dateUpdate ();
         },1000)
       }else {
@@ -1209,7 +1207,7 @@ $(document).ready(function () {
 
       $view.find(".checking-statue").text("正在检查更新");
 
-      setTimeout(function () {
+      setTimeout(function() {
         if(TPdata.system.internet_connection != "connected") {
           $view.find(".checking-statue").text("无法获取最新版本，请检查网络连接");
         }else if(TPdata.apps.systemUpdate.newVersion == true){
@@ -1219,10 +1217,9 @@ $(document).ready(function () {
           $view.find(".checking-statue").text("已升级到最新版本");
         }
       },3000)
-
     },
 
-    systemUpdate_download: function () {
+    systemUpdate_download: function() {
       var $view = viewLoad(".view-systemUpdate-download");
       var $navbar = control.navbar($view);
 
@@ -1235,11 +1232,11 @@ $(document).ready(function () {
       var startValue = 0;
       var endValue = 19;
       var value = startValue;
-      var timer = setInterval(function () {
+      var timer = setInterval(function() {
         if(value >= endValue) {
           $progressbar.value(value);
           clearInterval(timer);
-          setTimeout(function () {
+          setTimeout(function() {
             drillDown("systemUpdate_setup");
           },800)
         };
@@ -1249,7 +1246,7 @@ $(document).ready(function () {
       },300)
     },
 
-    systemUpdate_setup: function () {
+    systemUpdate_setup: function() {
       var $view = viewLoad(".view-systemUpdate-setup");
       TPdata.apps.systemUpdate.newVersion = false;
 
@@ -1258,15 +1255,15 @@ $(document).ready(function () {
       var startValue = 0;
       var endValue = 100;
       var value = startValue;
-      var timer = setInterval(function () {
+      var timer = setInterval(function() {
         if(value >= endValue) {
           $progressbar.value(value);
           clearInterval(timer);
-          setTimeout(function () {
+          setTimeout(function() {
             var $alert = control.alert([
               {
                 "text":"确定",
-                "click": function () {
+                "click": function() {
                   $alert.ok();
                   system.reset()
                 }
@@ -1282,11 +1279,10 @@ $(document).ready(function () {
         value += 5;
       },300)
     },
-
   }
 
   var control = {
-    navbar: function (targetView, option) {
+    navbar: function(targetView, option) {
       if (option == undefined) {
         var option = {};
       };
@@ -1300,7 +1296,7 @@ $(document).ready(function () {
       $navbar.back = $navbar.find(".nav-back");
 
       if (option.back == true) {
-        $navbar.back.click(function () {
+        $navbar.back.click(function() {
           navStackPop();
         });
       };
@@ -1308,17 +1304,17 @@ $(document).ready(function () {
       return $navbar;
     },
 
-    switch: function (elem, statue, available) {
+    switch: function(elem, statue, available) {
       elem.statue = statue;
 
       if (statue == true) {
         elem.removeClass("switch-off").addClass("switch-on");
-        setTimeout(function () {
+        setTimeout(function() {
           elem.addClass("switch-transition");
         })
       }else if(statue == false) {
         elem.removeClass("switch-on").addClass("switch-off");
-        setTimeout(function () {
+        setTimeout(function() {
           elem.addClass("switch-transition");
         })
       }
@@ -1327,7 +1323,7 @@ $(document).ready(function () {
         elem.addClass("unavailable")
       };
 
-      elem.click(function () {
+      elem.click(function() {
         $(this).trigger("switch-click");
         if($(this).hasClass("unavailable")) {
 
@@ -1339,13 +1335,13 @@ $(document).ready(function () {
         }
 
       });
-      elem.switchOn = function () {
+      elem.switchOn = function() {
         elem.removeClass("switch-off").addClass("switch-on").trigger("on");
         elem.statue = true;
         return elem;
       }
 
-      elem.switchOff = function () {
+      elem.switchOff = function() {
         elem.statue = false;
         elem.removeClass("switch-on").addClass("switch-off").trigger("off");
         return elem;
@@ -1361,10 +1357,9 @@ $(document).ready(function () {
       }
 
       return elem;
-
     },
 
-    scroll: function scroller (elem, pageControlStep) {
+    scroll: function scroller(elem, pageControlStep) {
       var scrollView = elem.wrap("<div class='scroller'></div>")
         .parent()
         .wrap("<div class='scroller-container'></div>")
@@ -1392,7 +1387,7 @@ $(document).ready(function () {
         scrollView.scrollTopMax = scrollView.contentHeight - scrollView.viewHeight;
 
         var targetScroll;
-        scrollView.up = function () {
+        scrollView.up = function() {
           if (scrollView.scroller.scrollTop() - scrollView.step <= 0) {
             targetScroll = 0;
           }else{
@@ -1403,7 +1398,7 @@ $(document).ready(function () {
           scrollView.thumb.animate({"top": targetScroll / scrollView.contentHeight * 100 + "%"},globeDuration)
         }
 
-        scrollView.down = function () {
+        scrollView.down = function() {
           if (scrollView.scroller.scrollTop() + scrollView.step >= scrollView.scrollTopMax) {
             targetScroll = scrollView.scrollTopMax;
           }else{
@@ -1415,12 +1410,11 @@ $(document).ready(function () {
         }
       }
 
-
-      scrollView.find(".scroller-up").click(function () {
+      scrollView.find(".scroller-up").click(function() {
         scrollView.up();
       });
 
-      scrollView.find(".scroller-down").click(function () {
+      scrollView.find(".scroller-down").click(function() {
         scrollView.down();
       });
 
@@ -1431,9 +1425,9 @@ $(document).ready(function () {
       return scrollView;
     },
 
-    alert: function (buttons) {
+    alert: function(buttons) {
       var $alert = viewLoad(".view-alert", "alert");
-      if(buttons){
+      if(buttons) {
 
         var buttonsLength = buttons.length;
         for (var i = 0; i < buttonsLength; i++) {
@@ -1450,7 +1444,7 @@ $(document).ready(function () {
       return {
         "title" : $alert.find(".alert-title"),
         "content": $alert.find(".alert-content"),
-        "close": function () {
+        "close": function() {
           $alert.css({
             "opacity" : "0",
             "transition": "0.3s ease-out"
@@ -1461,7 +1455,7 @@ $(document).ready(function () {
             "transition": "0.3s ease-out"
           });
 
-          setTimeout(function () {
+          setTimeout(function() {
             $alert.remove();
           }, 300)
         },
@@ -1473,7 +1467,7 @@ $(document).ready(function () {
             "transform" : "scale(1.1)",
           });
 
-          setTimeout(function () {
+          setTimeout(function() {
             $alert.remove();
           }, 300)
         }
@@ -1486,7 +1480,7 @@ $(document).ready(function () {
       $keyboard.placeholder = $keyboard.find(".navbar-textfield-placeholder").text("密码: ");
       $keyboard.button = $keyboard.find(".enter").text("确定");
 
-      $keyboard.find(".navbar-back").click(function () {
+      $keyboard.find(".navbar-back").click(function() {
         control.transitions.slideOut($keyboard, true);
         control.transitions.fadeIn(currentPage);
         $(document).off("keypress");
@@ -1516,7 +1510,7 @@ $(document).ready(function () {
       var btn_shift = $keyboard.find(".shift");
 
       var upper_case = false;
-      $keyboard.find(".shift").click(function () {
+      $keyboard.find(".shift").click(function() {
         if (upper_case == false) {
           upper_case = true;
           $keyboard.content.removeClass("lower-case");
@@ -1542,11 +1536,11 @@ $(document).ready(function () {
         }
       })
 
-      $keyboard.find(".delete").click(function () {
+      $keyboard.find(".delete").click(function() {
         deleteChar();
       })
 
-      $keyboard.find(".navbar-textfield-clear").click(function () {
+      $keyboard.find(".navbar-textfield-clear").click(function() {
         $keyboard.textfield[0].innerHTML = "";
         placeholder_switch();
       })
@@ -1578,7 +1572,7 @@ $(document).ready(function () {
         placeholder_switch();
       }
 
-      $keyboard.close = function () {
+      $keyboard.close = function() {
         control.transitions.fadeOut($keyboard, true);
         control.transitions.fadeIn(currentPage);
         $(document).off("keypress");
@@ -1587,8 +1581,8 @@ $(document).ready(function () {
       return $keyboard;
     },
 
-    "progressbar": function (elem) {
-      elem.value = function (percent) {
+    "progressbar": function(elem) {
+      elem.value = function(percent) {
         elem.find(".progressbar-value").css("width",percent * 100 + "%");
       }
 
@@ -1598,14 +1592,14 @@ $(document).ready(function () {
       return elem;
     },
 
-    "transitions" : {
-      slideIn : function (elem) {
+    "transitions": {
+      slideIn: function(elem) {
         elem.css({
           "transform": "translate3d(100%,0,0)",
           "opacity"  :"0",
         });
 
-        setTimeout(function () {
+        setTimeout(function() {
           elem.css({
             "opacity"  :"1",
             "transform": "translate3d(0,0,0)",
@@ -1613,7 +1607,7 @@ $(document).ready(function () {
           });
         })
       },
-      slideOut: function (elem, if_remove) {
+      slideOut: function(elem, if_remove) {
         elem.css({
           "transform": "translate3d(100%,0,0)",
           "transition": "0.3s ease-out",
@@ -1621,19 +1615,19 @@ $(document).ready(function () {
         });
 
         if (if_remove == true) {
-          setTimeout(function () {
+          setTimeout(function() {
             elem.remove();
           },300)
         };
       },
 
-      fadeIn : function (elem) {
+      fadeIn: function (elem) {
         elem.css({
           "opacity": "0",
           "transition":"0"
         });
 
-        setTimeout(function () {
+        setTimeout(function() {
           elem.css({
             "opacity": "1",
             "transition":"0.3s ease-out"
@@ -1641,13 +1635,13 @@ $(document).ready(function () {
         })
       },
 
-      fadeOut : function (elem, if_remove) {
+      fadeOut: function(elem, if_remove) {
         elem.css({
           "opacity": "1",
           "transition":"0"
         });
 
-        setTimeout(function () {
+        setTimeout(function() {
           elem.css({
             "opacity": "0",
             "transition":"0.3s ease-out"
@@ -1655,15 +1649,15 @@ $(document).ready(function () {
         })
 
         if (if_remove == true) {
-          setTimeout(function () {
+          setTimeout(function() {
             elem.remove();
           },300)
         };
       }
     },
 
-    simulatorToolbar: function (elem) {
-      elem.find(".toolbar-button").click(function () {
+    simulatorToolbar: function(elem) {
+      elem.find(".toolbar-button").click(function() {
         var eventName = "systemEvent_" + $(this).data("event").eventName;
         $("#screen").trigger(eventName)
       })
@@ -1674,11 +1668,11 @@ $(document).ready(function () {
         var internetConnection_switch = control.switch($(".toolbar-internetConnection .switch"),true,true)
       }
 
-      internetConnection_switch.on("on", function () {
+      internetConnection_switch.on("on", function() {
         TPdata.system.internet_connection = "connected";
         $("#screen").trigger("internetConnectionOn")
       })
-      internetConnection_switch.on("off", function () {
+      internetConnection_switch.on("off", function() {
         TPdata.system.internet_connection = "noConnection";
         $("#screen").trigger("internetConnectionOff")
       })
@@ -1687,7 +1681,7 @@ $(document).ready(function () {
 
   var currentPage;
 
-  function viewLoad (elem, type) {
+  function viewLoad(elem, type) {
     if (type == "alert") {
       var $view = $(".view-collection").find(elem).clone().appendTo(viewContainer).show();
       $view.css({
@@ -1698,7 +1692,7 @@ $(document).ready(function () {
         "transform" : "scale(0.9)",
       });
 
-      setTimeout(function () {
+      setTimeout(function() {
         $view.css({
           "opacity"    : "1",
           "transition" : "0.3s ease-out",
@@ -1710,13 +1704,13 @@ $(document).ready(function () {
       })
     } else if (type == "keyboard") {
       var $view = $(".view-collection").find(elem).clone().appendTo(viewContainer).show();
-      setTimeout(function () {
+      setTimeout(function() {
         control.transitions.fadeOut(currentPage);
         control.transitions.slideIn($view);
       })
     } else if (type == "cable_check") {
       var $view = $(".view-collection").find(elem).clone().appendTo(viewContainer).show();
-      setTimeout(function () {
+      setTimeout(function() {
         control.transitions.fadeIn($view);
       })
     } else {
@@ -1727,11 +1721,11 @@ $(document).ready(function () {
     return $view;
   }
 
-  function viewRefresh (target) {
+  function viewRefresh(target) {
     if (target == undefined) {
       // viewContainer.html("");
       if (viewContainer.children().length != 0) {
-        viewContainer.children().fadeOut(globeDuration, function () {
+        viewContainer.children().fadeOut(globeDuration, function() {
           $(this).remove();
         })
       }
@@ -1744,7 +1738,7 @@ $(document).ready(function () {
     }
   };
 
-  function drillDown (navTarget, viewData) {
+  function drillDown(navTarget, viewData) {
     if (viewData == undefined) {
       var viewData = "";
     };
@@ -1768,7 +1762,7 @@ $(document).ready(function () {
     navStack.push(navTarget);
   }
 
-  function navStackPop (steps) {
+  function navStackPop(steps) {
     if (steps == undefined) {
       var steps = 1;
     }
@@ -1788,7 +1782,7 @@ $(document).ready(function () {
     control.transitions.fadeIn(currentPage)
   }
 
-  function modalViewController (navTarget, viewData) {
+  function modalViewController(navTarget, viewData) {
     if (viewData == undefined) {
       var viewData = "";
     };
@@ -1797,14 +1791,14 @@ $(document).ready(function () {
   }
 
   var system = {
-    boot: function () {
+    boot: function() {
       var $view = viewLoad(".view-Uboot");
-      setTimeout(function () {
+      setTimeout(function() {
         $view.remove();
         setTimeout(function() {
           var $view = viewLoad(".view-boot");
 
-          setTimeout(function () {
+          setTimeout(function() {
             if (TPdata.boot.first_boot == true) {
               viewController.guide();
             } else {
@@ -1837,14 +1831,13 @@ $(document).ready(function () {
 
   control.simulatorToolbar($(".toolbar"));
 
-  $("#screen").on("systemEvent_reset", function () {
+  $("#screen").on("systemEvent_reset", function() {
     viewController.resetConfirmAlert();
   })
 
   function segmentedController (elem_control, elem_child, nth_child) {
 
   }
-
 })
 
 
