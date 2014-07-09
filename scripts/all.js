@@ -599,7 +599,7 @@ $(document).ready(function() {
           $view.find(".view-networkConfig-wifi-statue").text(TPdata.system.wifi_ssid)  /*SSID*/
           $view.find(".bullet").eq(1).addClass("bullet-wifi-blue");
 
-        }else if (TPdata.system.wifi_switch == false) {
+        } else if (TPdata.system.wifi_switch == false) {
 
           $view.find(".view-networkConfig-wifi-statue").text("无线网络已关闭")  /*SSID*/
           $view.find(".bullet").eq(1).addClass("bullet-wifi-grey");
@@ -622,7 +622,7 @@ $(document).ready(function() {
           drillDown("networkConfig_ap_wifi")
         })
 
-      }else if (TPdata.system.AP_mode == true) {
+      } else if (TPdata.system.AP_mode == true) {
 
         $view.find(".view-networkConfig_internet").text("互联网")
         $view.find(".view-networkConfig_wifi").text(TPdata.system.AP_wifi_ssid)
@@ -688,7 +688,7 @@ $(document).ready(function() {
         $view.find(".segmentedControl-cell:nth-child(1)").addClass("segmentedControl_selected");
         $view.find(".segmentedControl-child:nth-child(2)").hide();
 
-      }else if (TPdata.system.internet_mode == "pppoe") {
+      } else if (TPdata.system.internet_mode == "pppoe") {
         $view.find(".segmentedControl-cell:nth-child(2)").addClass("segmentedControl_selected");
         $view.find(".segmentedControl-child:nth-child(1)").hide();
 
@@ -754,7 +754,7 @@ $(document).ready(function() {
         var wifi_switch = control.switch($view.find(".wifi-switch"), true);
         wifi_setting_section.show();
         $view.find(".wifi-switch-statue").text("已开启");
-      }else {
+      } else {
         var wifi_switch = control.switch($view.find(".wifi-switch"), false);
         wifi_setting_section.hide();
         $view.find(".wifi-switch-statue").text("已关闭");
@@ -776,7 +776,7 @@ $(document).ready(function() {
       if(TPdata.system.wifi_encrypt == true) {
         var wifi_encrypt_switch = control.switch($view.find(".wifi-encrypt-switch"), true);
         $view.find(".wifi-encrypt-statue").text("已开启");
-      }else {
+      } else {
         var wifi_encrypt_switch = control.switch($view.find(".wifi-encrypt-switch"), false);
         $view.find(".wifi-encrypt-statue").text("已关闭");
         $view.find(".wifi-encrypt-cell").hide();
@@ -942,7 +942,7 @@ $(document).ready(function() {
         var $switch = control.switch($view.find(".switch"), false, true);
         $view.find(".twoFactorAuth-on").hide();
 
-      }else if (TPdata.system.twofactorAuth_switch == true) {
+      } else if (TPdata.system.twofactorAuth_switch == true) {
 
         var $switch = control.switch($view.find(".switch"), true, true);
         $view.find(".twoFactorAuth-off").hide();
@@ -969,7 +969,7 @@ $(document).ready(function() {
         $view.find(".wirelessNetwork-on").hide()
         var $switch = control.switch($view.find(".navbar .switch"), false, true);
 
-      }else if (TPdata.system.wifi_switch == true) {
+      } else if (TPdata.system.wifi_switch == true) {
 
         $view.find(".wirelessNetwork-off").hide()
         var $switch = control.switch($view.find(".navbar .switch"), true, false);
@@ -982,7 +982,7 @@ $(document).ready(function() {
         $view.find(".wifi-encrypt-text").text("已开启");
         var wifi_encrypt_switch = control.switch($view.find(".wifi-encrypt-switch"), "on", true);
 
-      }else if(TPdata.system.wifi_encrypt == false) {
+      } else if(TPdata.system.wifi_encrypt == false) {
         $view.find(".wifi-encrypt-text").text("已关闭");
         var wifi_encrypt_switch = control.switch($view.find(".wifi-encrypt-switch"), "off", true);
         $(".wifi-password").hide();
@@ -1044,7 +1044,7 @@ $(document).ready(function() {
         var $switch = control.switch($view.find(".navbar .switch"), false, true);
         $view.find(".gameAccelerater-on").hide();
 
-      }else if (TPdata.system.gameAccelerater_switch == true) {
+      } else if (TPdata.system.gameAccelerater_switch == true) {
         var $switch = control.switch($view.find(".navbar .switch"), true, true);
         $view.find(".gameAccelerater-off").hide();
 
@@ -1087,7 +1087,7 @@ $(document).ready(function() {
           $(".gameAccelerater-statue").text("游戏模式已开启，智能检测中").removeClass("two-lines")
           $(".gameAccelerater-gameName").text("");
 
-        }else if (TPdata.apps.gameAccelerater.statue == "accelerating") {
+        } else if (TPdata.apps.gameAccelerater.statue == "accelerating") {
           $(".gameAccelerater-statue").text("当前加速游戏:").addClass("two-lines")
           $(".gameAccelerater-gameName").text("魔兽世界");
         }
@@ -1119,7 +1119,7 @@ $(document).ready(function() {
         var timer = setInterval (function() {
           dateUpdate ();
         },1000)
-      }else {
+      } else {
         $view.find(".navbar-title").text("时钟");
         $view.find(".time-number").text("--:--");
         $view.find(".timeform-mark").text("");
@@ -1173,7 +1173,7 @@ $(document).ready(function() {
           if (date_hours > 12) {
             date_hours -= 12;
             var timeform_mark = "下午";
-          }else {
+          } else {
             var timeform_mark = "上午";
           }
 
@@ -1186,7 +1186,7 @@ $(document).ready(function() {
           var timeform_Left = ($view.width() - time_width) / 2 + time_width;
           $view.find(".timeform-mark").css("left",timeform_Left + "px")
 
-        }else {
+        } else {
           var time_marginLeft = ($view.width() - time_width) / 2;
         }
 
@@ -1210,10 +1210,10 @@ $(document).ready(function() {
       setTimeout(function() {
         if(TPdata.system.internet_connection != "connected") {
           $view.find(".checking-statue").text("无法获取最新版本，请检查网络连接");
-        }else if(TPdata.apps.systemUpdate.newVersion == true){
+        } else if(TPdata.apps.systemUpdate.newVersion == true){
           $view.find(".checking-statue").text("发现新版本");
           $navbar.button.show();
-        }else {
+        } else {
           $view.find(".checking-statue").text("已升级到最新版本");
         }
       },3000)
@@ -1312,7 +1312,7 @@ $(document).ready(function() {
         setTimeout(function() {
           elem.addClass("switch-transition");
         })
-      }else if(statue == false) {
+      } else if(statue == false) {
         elem.removeClass("switch-on").addClass("switch-off");
         setTimeout(function() {
           elem.addClass("switch-transition");
@@ -1327,10 +1327,10 @@ $(document).ready(function() {
         $(this).trigger("switch-click");
         if($(this).hasClass("unavailable")) {
 
-        }else if($(this).hasClass("switch-on")) {
+        } else if($(this).hasClass("switch-on")) {
           elem.switchOff()
 
-        }else if ($(this).hasClass("switch-off")) {
+        } else if ($(this).hasClass("switch-off")) {
           elem.switchOn()
         }
 
@@ -1350,7 +1350,7 @@ $(document).ready(function() {
       elem.available = function (BOOL) {
         if (BOOL == true) {
           elem.removeClass("unavailable")
-        }else if (BOOL == false) {
+        } else if (BOOL == false) {
           elem.addClass("unavailable")
         }
         return elem;
@@ -1390,7 +1390,7 @@ $(document).ready(function() {
         scrollView.up = function() {
           if (scrollView.scroller.scrollTop() - scrollView.step <= 0) {
             targetScroll = 0;
-          }else {
+          } else {
             targetScroll = scrollView.scroller.scrollTop() - scrollView.step;
           }
 
@@ -1401,7 +1401,7 @@ $(document).ready(function() {
         scrollView.down = function() {
           if (scrollView.scroller.scrollTop() + scrollView.step >= scrollView.scrollTopMax) {
             targetScroll = scrollView.scrollTopMax;
-          }else {
+          } else {
             targetScroll = scrollView.scroller.scrollTop() + scrollView.step;
           }
 
@@ -1491,7 +1491,7 @@ $(document).ready(function() {
         if(aug != undefined) {
           $keyboard.textfield[0].innerHTML = aug;
           placeholder_switch();
-        }else {
+        } else {
           return $keyboard.textfield[0].innerHTML;
         }
       }
@@ -1501,7 +1501,7 @@ $(document).ready(function() {
       function placeholder_switch() {
         if($keyboard.textfield.text() == "") {
           $keyboard.placeholder.show();
-        }else {
+        } else {
           $keyboard.placeholder.hide();
         }
       }
@@ -1516,11 +1516,11 @@ $(document).ready(function() {
           $keyboard.content.removeClass("lower-case");
           btn_shift.removeClass('shift-normal').addClass('shift-active');
 
-        }else if (upper_case == true) {
+        } else if (upper_case == true) {
           upper_case = "shiftLock";
           btn_shift.removeClass('shift-active').addClass('shift-lock');
 
-        }else {
+        } else {
           upper_case = false;
           $keyboard.content.addClass("lower-case");
           btn_shift.removeClass('shift-lock').addClass('shift-normal');
@@ -1531,7 +1531,7 @@ $(document).ready(function() {
       $keyboard.find(".letter").click(function() {
         if (upper_case == false) {
           inputChar(this.innerHTML.toLowerCase())
-        }else {
+        } else {
           inputChar(this.innerHTML.toUpperCase())
         }
       })
@@ -1559,7 +1559,7 @@ $(document).ready(function() {
         placeholder_switch();
         if (upper_case == "shiftLock"){
           return;
-        }else {
+        } else {
           upper_case = false;
           $keyboard.content.addClass("lower-case");
           btn_shift.removeClass('shift-active').addClass('shift-normal');
@@ -1664,7 +1664,7 @@ $(document).ready(function() {
 
       if (TPdata.system.internet_connection == "connected") {
         var internetConnection_switch = control.switch($(".toolbar-internetConnection .switch"),true,true)
-      }else {
+      } else {
         var internetConnection_switch = control.switch($(".toolbar-internetConnection .switch"),true,true)
       }
 
