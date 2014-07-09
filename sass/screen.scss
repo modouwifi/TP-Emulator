@@ -22,11 +22,11 @@ $red         : #fb427f;
   @-webkit-keyframes $animation_name {
     @content;
   }
- 
+
   @-moz-keyframes $animation_name {
     @content;
   }
- 
+
   @keyframes $animation_name {
     @content;
   }
@@ -161,7 +161,7 @@ html, body {
   position: fixed;
   bottom: 0;
   display: none;
-  .toolbar-button{
+  .toolbar-button {
     height: 100%;
     width: 80px;
     // background-color: white;
@@ -169,11 +169,11 @@ html, body {
     text-align: center;;
     line-height: 44px;
     border-left: 1px solid #ccc;
-    &:active{
+    &:active {
       background-color: #ccc;
     }
   }
-  .toolbar-switch{
+  .toolbar-switch {
     float: right;
     position: relative;
     width: 140px;
@@ -184,7 +184,7 @@ html, body {
   }
 }
 
-#screen{
+#screen {
   position: absolute;
   width: 320px;
   height: 240px;
@@ -196,13 +196,13 @@ html, body {
   background-color: white;
 }
 
-.view-launcher{
+.view-launcher {
   height: 100%;
   width: 100%;
   background-color: $white;
 }
 
-.view{
+.view {
   height: 100%;
   width: 100%;
   background-color: $white;
@@ -213,7 +213,7 @@ html, body {
   // opacity: 0;
 }
 
-.navbar{
+.navbar {
   position: relative;
   height: 48px;
   border-bottom: 2px solid $lightGrey;
@@ -223,7 +223,7 @@ html, body {
   text-align: center;
   font-size: 24px;
   font-weight: bold;
-  .navbar-back{
+  .navbar-back {
     height: 48px;
     width: 48px;
     position: absolute;
@@ -231,11 +231,11 @@ html, body {
     top: 0;
     background-color: blue;
     background: inline-image("back.svg");
-    &:active{
+    &:active {
       background-color: $blue;
     }
   }
-  .navbar-button{
+  .navbar-button {
     height: 46px;
     width: 60px;
     right: 0;
@@ -243,12 +243,12 @@ html, body {
     padding-right: 8px;
     top: 0;
     color: $blue;
-    &:active{
+    &:active {
       background-color: $blue;
       color: white;
     }
   }
-  .navbar-textfield{
+  .navbar-textfield {
     color: $textBlack;
     font-weight: normal;
     text-align: left;
@@ -256,7 +256,7 @@ html, body {
     font-size: 20px;
     float: left;
   }
-  .navbar-textfield-placeholder{
+  .navbar-textfield-placeholder {
     color: $grey;
     font-weight: normal;
     text-align: left;
@@ -265,7 +265,7 @@ html, body {
     float: left;
   }
 
-   .navbar-tabbar{
+   .navbar-tabbar {
      font-size: 24px;
      position: absolute;;
      left: 48px;
@@ -274,17 +274,17 @@ html, body {
      bottom: 0;
    }
 
-   .tab{
+   .tab {
      float: left;
      width: 50%;
      height: 46px;
    }
 
-   .tab-selected{
+   .tab-selected {
      color: $blue;
    }
 
-   .tab-selected-underline{
+   .tab-selected-underline {
      position: absolute;
      left: 0;
      bottom: -2px;
@@ -294,19 +294,19 @@ html, body {
    }
 }
 
-.content{
+.content {
   height: 192px;
   position: absolute;
   width: 100%;
   box-sizing: border-box;
-  .table-cell{
+  .table-cell {
     position: relative;
     width: 320px;
     height: 48px;
     font-size: 20px;
     line-height: 48px;
     text-indent: 16px;
-    &::after{
+    &::after {
       content:"";
       position: absolute;
       height: 1px;
@@ -316,23 +316,23 @@ html, body {
       left: 0px;
       right: 0;
     }
-    &:nth-child(4n):after, &:last-child:after{
+    &:nth-child(4n):after, &:last-child:after {
       // background-color: transparent;
     }
-    .table-cell-title{
+    .table-cell-title {
       color: $grey;
     }
-    .table-cell-content{
+    .table-cell-content {
       position: absolute;
       top: 0;
       right: 16px;
     }
   }
 
-  .table-cell-bullet{
+  .table-cell-bullet {
     // background-color: red;
     text-indent: 48px;
-    .bullet{
+    .bullet {
       position: absolute;;
       top: 0;
       left: 0;
@@ -341,7 +341,7 @@ html, body {
       background-position: 50% 50%;
     }
 
-    &:after{
+    &:after {
       content:"";
       position: absolute;
       height: 1px;
@@ -352,14 +352,14 @@ html, body {
     }
   }
 
-  .bullet-wifi-4{
+  .bullet-wifi-4 {
     background: inline-image("wifi_signal_4.png") no-repeat;
   }
 
-  .selected{
+  .selected {
     color: $blue;
     // font-weight: bold;
-    &:before{
+    &:before {
       content:"";
       position: absolute;
       top: 0;
@@ -369,15 +369,15 @@ html, body {
       background-color: $blue;
     }
   }
-  
+
 }
 
-.scroller-container{
+.scroller-container {
   height: 100%;
   width: 100%;
   @include display-box;
 
-  .scroller{
+  .scroller {
     height: 100%;
     width: auto;
     overflow: hidden;
@@ -385,39 +385,39 @@ html, body {
     @include box-flex(1);
   }
 
-  .scroller-pageController{
+  .scroller-pageController {
     position: relative;
     width: 60px;
     height: 100%;
     float: left;
   }
-  .scroller-up{
+  .scroller-up {
     width:100%;
     height:48px;
     background-image: inline-image("scroller_pageControl_up.svg");
-    &:active{
+    &:active {
       background-image: inline-image("scroller_pageControl_up_pressed.svg");
     }
   }
-  .scroller-down{
+  .scroller-down {
     position: absolute;
     bottom: 0;
     left: 0;
     width:100%;
     height:48px;
     background-image: inline-image("scroller_pageControl_down.svg");
-    &:active{
+    &:active {
       background-image: inline-image("scroller_pageControl_down_pressed.svg");
     }
   }
-  .scrollbar{
+  .scrollbar {
     position: relative;
     width:4px;
     height: 96px;
     background-color:$lightGrey;
     margin:0 auto;
   }
-  .scrollbar-thumb{
+  .scrollbar-thumb {
     position: relative;
     width:4px;
     background-color:$grey;
@@ -425,11 +425,11 @@ html, body {
 }
 
 
-#view-launcher{
+#view-launcher {
   display: block;
 }
 
-.switch , .switch{
+.switch , .switch {
   height: 32px;
   width: 48px;
   position: absolute;
@@ -438,7 +438,7 @@ html, body {
   right: 16px;
   background: no-repeat;
   border-radius: 16px;
-  &:before{
+  &:before {
     content:"";
     position: absolute;
     height: 20px;
@@ -449,31 +449,31 @@ html, body {
   }
 }
 
-.switch-transition{
+.switch-transition {
   @include transition(0.3s ease-out);
-  &:before{
+  &:before {
     @include transition(0.3s ease-out);
   }
 }
 
-.switch-off{
+.switch-off {
   // background: inline-image("switch_off.svg");
   background-color: $lightGrey;
-  &:before{
+  &:before {
     background-color: white;
   }
 }
 
-.switch-on{
+.switch-on {
   // background: inline-image("switch_on.svg");
   background-color: $blue;
-    &:before{
+    &:before {
     background-color: white;
     @include transform(translate3d(16px,0,0));
   }
 }
 
-.segmentedControl{
+.segmentedControl {
   position: relative;
   top: 6px;
   margin: 0 16px;
@@ -481,7 +481,7 @@ html, body {
   overflow: hidden;
   border: 1px solid $blue;
 
-  .segmentedControl-cell{
+  .segmentedControl-cell {
     width: 50%;
     height: 32px;
     font-size: 16px;
@@ -492,22 +492,22 @@ html, body {
     box-sizing: border-box;
     color: $blue;
   };
-  .segmentedControl_selected{
+  .segmentedControl_selected {
     background-color: $blue;
     color: white;
   }
-  .segmentedControl-cell:nth-child(-n+1){
+  .segmentedControl-cell:nth-child(-n+1) {
     border-right: 1px solid $blue;
   }
 }
 
-.segmentedControl-cell-wrapper{
+.segmentedControl-cell-wrapper {
   height: 48px;
 }
 
-.segmentedControl-child-wrapper{
+.segmentedControl-child-wrapper {
   position: relative;
-  .segmentedControl-child{
+  .segmentedControl-child {
     // display: none;
     position: absolute;
     top: 0;
@@ -515,37 +515,37 @@ html, body {
   }
 }
 
-.progressbar{
+.progressbar {
   position: relative;
   width: 100%;
   height: 30px;
   padding: 0 16px;
   box-sizing: border-box;
 
-  .progressbar-label-left{
+  .progressbar-label-left {
     float: left;
     width: 140px;
   }
-  .progressbar-label-right{
+  .progressbar-label-right {
     float: right;
     width: 140px;
     text-align: right;
   }
-  .progressbar-wrapper{
+  .progressbar-wrapper {
     position: relative;
     width: auto;
     top: 24px;
     height: 6px;
     background-color: $lightGrey;
   }
-  .progressbar-value{
+  .progressbar-value {
     width: 0%;
     height: 100%;
     background-color: $blue;
   }
 }
 
-.chevron:before{
+.chevron:before {
   content:"";
   position: absolute;
   height: 48px;
@@ -556,23 +556,23 @@ html, body {
   background: inline-image("drillDown.svg") no-repeat;
 }
 
-.chevron:active, .pressed-bg:active{
+.chevron:active, .pressed-bg:active {
   background-color: $lightGrey;
 }
 
 
-.view-alert{
+.view-alert {
   // position: relative;
   height: 100%;
   width: 100%;
   background-color: transparent;
-  .overlay{
+  .overlay {
     background-color: rgba(0,0,0,0.5);
     position: absolute;
     height: 100%;
     width: 100%;
   }
-  .alert-container{
+  .alert-container {
     position: absolute;
     top: 16px;
     bottom: 16px;
@@ -583,13 +583,13 @@ html, body {
     text-align: center;
     overflow: hidden;
   }
-  .alert-title{
+  .alert-title {
     margin-top: 30px;
     margin-bottom: 20px;
     font-size: 24px;
     font-weight: bold;
   }
-  .alert-content{
+  .alert-content {
     width: 100%;
     margin: 0 auto;
     font-size: 20px;
@@ -597,7 +597,7 @@ html, body {
     box-sizing: border-box;
     padding: 0 16px;
   }
-  .alert-footer{
+  .alert-footer {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -608,11 +608,11 @@ html, body {
     font-weight: bold;
     color: $blue;
   }
-  .alert-buttons{
+  .alert-buttons {
     float: left;
     width: 100%;
     box-shadow: -1px 0 0 $lightGrey;
-    &:active{
+    &:active {
       height: 48px;
       background-color: $blue;
       color: white;
@@ -620,30 +620,30 @@ html, body {
   }
 }
 
-.view-keyboard{
+.view-keyboard {
   background-color: #ccc;
-  .navbar{
+  .navbar {
     border: none;
     box-shadow: 0 1px 0 rgba(0,0,0,0.3)
   }
-  .navbar-textfield{
+  .navbar-textfield {
     width: 280px;
     position: absolute;
     right: 0;
     border-radius: 4px;
     height: 100%;
   }
-  .navbar-textfield-clear{
+  .navbar-textfield-clear {
     height: 48px;
     width: 48px;
     position: absolute;
     right: 0;
     background: inline-image("keyboard_clear.png") no-repeat;
-    &:active{
+    &:active {
       background-color: $blue;
     }
   }
-  .content{
+  .content {
     @include display-box;
     @include box-orient(vertical);
     @include box-pack(center);
@@ -651,20 +651,20 @@ html, body {
     font-size: 20px;
   }
 
-  .lower-case{
+  .lower-case {
     text-transform:lowercase;
   }
-  .row{
+  .row {
     @include box-flex(1);
     @include display-box;
     @include box-pack(center);
     position: relative;
     box-sizing: border-box;
-    &:last-child .keyboard-button, &:last-child .keyboard-button:after{
+    &:last-child .keyboard-button, &:last-child .keyboard-button:after {
       border: none;
     }
   }
-  .keyboard-button{
+  .keyboard-button {
     color: $textBlack;
     @include box-flex(0);
     width: 30px;
@@ -679,31 +679,31 @@ html, body {
     background-color: white;
     box-shadow: 0 1px 0 rgba(0,0,0,0.3);
 
-    &:active{
+    &:active {
       background-color: $blue;
       color: white;
-      &:after{
+      &:after {
         border: none !important;
       }
     }
   }
 
-  .shift, .delete{
+  .shift, .delete {
     width: 46px;
   }
 
-  .symbol{
+  .symbol {
     color: $blue;
     width: 64px;
     font-weight: bold;
-    &:active{
+    &:active {
       background-color: white;
       color: white;
-      &:before{
+      &:before {
         background-color: $blue;
       }
     }
-    &:before{
+    &:before {
       content: "123";
       line-height: 28px;
       position: absolute;
@@ -719,10 +719,10 @@ html, body {
       background-color: white;
     }
   }
-  .space{
+  .space {
     width: 186px;
   }
-  .enter{
+  .enter {
     width: 64px;
     background-color: $blue;
     color: white;
@@ -730,43 +730,42 @@ html, body {
     float: right;
     font-weight: bold;
     box-shadow: 0 1px 0 rgba(0,0,0,0.5);
-    &:active{
+    &:active {
       background-color: black;
       color: $blue;
     }
   }
-  .shift{
+  .shift {
     background-image: inline-image("keyboard_btn_shift.png");
     background-color: white;
 
   }
-  .shift-active{
+  .shift-active {
     background: inline-image("keyboard_btn_shift_active.png") no-repeat white;
   }
-  .shift-lock{
+  .shift-lock {
     background: inline-image("keyboard_btn_shift_lock.png") no-repeat $blue;
     background-color: $blue;
   }
 
-  .delete{
+  .delete {
     background-image: inline-image("keyboard_btn_delete.png");
-    &:active{
+    &:active {
       // background: inline-image("keyboard_btn_delete_pressed.png")no-repeat;
       background-color: $blue;
     }
   }
 }
 
-
-.launcher-apps-scroller{
+.launcher-apps-scroller {
   width: 235px;
   height: 100%;
   overflow: hidden;
   float: left;
-  
+
 }
 
-.launcher-app{
+.launcher-app {
   position: relative;
   width: 112px;
   height: 112px;
@@ -783,7 +782,7 @@ html, body {
   overflow: hidden;
   font-weight: bold;
 
-  &:active:after{
+  &:active:after {
     content: "";
     position: absolute;
     top: 0;
@@ -791,15 +790,15 @@ html, body {
     bottom: 0;
     right: 0;
     background-color: rgba(0,0,0,0.1);
-    pointer-events : none;  
+    pointer-events : none;
   }
-  &:nth-child(2n-1){
+  &:nth-child(2n-1) {
     margin-left: 6px;
   }
-  &:nth-child(1), &:nth-child(2){
+  &:nth-child(1), &:nth-child(2) {
     margin-top: 5px;
   }
-  &:nth-child(2n){
+  &:nth-child(2n) {
     margin-left: 5px;
   }
   // &:nth-child(4n-3), &:nth-child(4n-2){
@@ -809,51 +808,51 @@ html, body {
   //   margin-top: 5px;
   //   margin-bottom: 5px;
   // }
-  &:last-child{
+  &:last-child {
     margin-bottom: 5px;
   }
 }
 
-.launcher-right-column{
+.launcher-right-column {
   position: relative;
   width: 85px;
   height: 100%;
   float: left;
 }
 
-.launcher-menu, .launcher-pageControl-up, .launcher-pageControl-down{
+.launcher-menu, .launcher-pageControl-up, .launcher-pageControl-down {
   position: relative;
   height: 80px;
 }
 
-.launcher-pageControl-up{
+.launcher-pageControl-up {
   background: inline-image("launcher_nav_up.svg") no-repeat;
   background-position: 50% 50%;
-  &:active{
+  &:active {
     background: inline-image("launcher_nav_up_pressed.svg") no-repeat;
     background-position: 50% 50%;
   }
 }
 
-.launcher-pageControl-down{
+.launcher-pageControl-down {
   background: inline-image("launcher_nav_down.svg") no-repeat;
   background-position: 50% 50%;
-  &:active{
+  &:active {
     background: inline-image("launcher_nav_down_pressed.svg") no-repeat;
     background-position: 50% 50%;
   }
 }
 
-.launcher-menu{
+.launcher-menu {
   background: inline-image("launcher_nav_menu.svg") no-repeat;
   background-position: 50% 50%;
-  &:active{
+  &:active {
     background: inline-image("launcher_nav_menu_pressed.svg") no-repeat;
     background-position: 50% 50%;
   }
 }
 
-.launcher-pageControl-scrollbar{
+.launcher-pageControl-scrollbar {
   position: absolute;
   right: 3px;
   top: 4px;
@@ -861,7 +860,7 @@ html, body {
   width: 1px;
 }
 
-.launcher-pageControl-scrollbar-thumb{
+.launcher-pageControl-scrollbar-thumb {
   position: absolute;
   right: 0;
   top: 0;
@@ -869,15 +868,15 @@ html, body {
   width: 1px;
 }
 
-.launcher-app-networkMonitor{
+.launcher-app-networkMonitor {
   background-image: inline-image("../images/appicon_status.png");
 }
 
-.launcher-app-devices{
+.launcher-app-devices {
   background-image: inline-image("appicon_devices.png");
 }
 
-.launcher-app-time{
+.launcher-app-time {
   background-image: inline-image("appicon_time.png");
 }
 
@@ -885,29 +884,28 @@ html, body {
   background-image: inline-image("appicon_networkConfig.png");
 }
 
-.launcher-app-expertMode{
+.launcher-app-expertMode {
   background-image: inline-image("appicon_expertMode.png");
 }
 
-.launcher-app-twofactorAuth{
+.launcher-app-twofactorAuth {
   background-image: inline-image("appicon_app_2-factorAuth.png");
 }
 
-.launcher-app-systemUpdate{
+.launcher-app-systemUpdate {
   background-image: inline-image("appicon_update.png");
 }
 
-.launcher-app-gameAccelerater{
+.launcher-app-gameAccelerater {
   background-image: inline-image("appicon_gameAcc.png");
 }
 
-
-.view-networkMonitor{
-  .speedometer-container{
+.view-networkMonitor {
+  .speedometer-container {
     width: 100%;
     height: 144px;
   }
-  .speedometer-download, .speedometer-upload{
+  .speedometer-download, .speedometer-upload {
     height: 112px;
     width: 112px;
     box-sizing: border-box;
@@ -919,10 +917,10 @@ html, body {
     overflow: hidden;
   }
 
-  .speedometer-download{
+  .speedometer-download {
     border: 3px solid $blue;
     color: $blue;
-      .speedometer-level{
+      .speedometer-level {
         position: absolute;
         width: 100%;
         background-color: lighten($blue, 40%);
@@ -930,10 +928,10 @@ html, body {
       }
   }
 
-  .speedometer-upload{
+  .speedometer-upload {
     border: 3px solid $red;
     color: $red;
-    .speedometer-level{
+    .speedometer-level {
       position: absolute;
       width: 100%;
       background-color: lighten($red, 30%);
@@ -941,31 +939,31 @@ html, body {
     }
   }
 
-  .speedometer-type, .speedometer-value, .speedometer-unit{
+  .speedometer-type, .speedometer-value, .speedometer-unit {
     position: absolute;
     width: 100%;
     text-align: center;
   }
 
-  .speedometer-type{
+  .speedometer-type {
     height: 16px;
     top: 16px;
     font-size: 16px;
   }
 
-  .speedometer-value{
+  .speedometer-value {
     height: 24px;
     top: 42px;
     font-size: 28px;
   }
 
-  .speedometer-unit{
+  .speedometer-unit {
     height: 16px;
     top: 80px;
     font-size: 16px;
   }
 
-  .footer{
+  .footer {
     height: 48px;
     width: 288px;
     border-top: 1px solid $lightGrey;
@@ -976,12 +974,12 @@ html, body {
     line-height: 46px;
   }
 
-  .internet-status{
+  .internet-status {
     position: absolute;
     left: 0px;
     font-size: 20px;
   }
-  .devices-number{
+  .devices-number {
     position: absolute;
     right: 0px;
     font-size: 20px;
@@ -989,7 +987,7 @@ html, body {
   }
 }
 
-.view-device-detail{
+.view-device-detail {
   .block{
     text-align: center;
     font-size: 24px;
@@ -1062,10 +1060,10 @@ html, body {
   }
 }
 
-.view-expertMode{
+.view-expertMode {
 
-  .expertMode-off{
-    .expertMode-illustration{
+  .expertMode-off {
+    .expertMode-illustration {
     position: absolute;
     width: 100%;
     height: 128px;
@@ -1075,7 +1073,7 @@ html, body {
     background-position: 50% 0;
     background-image: inline-image("appicon_expertMode_illustration.svg");
   }
-    .expertMode-description{
+    .expertMode-description {
       font-size: 20px;
       padding: 16px;
       padding-bottom: 12px;
@@ -1084,15 +1082,15 @@ html, body {
       line-height: 26px;
     }
   }
-  .expertMode-on{
-    padding: 16px;    
-    .expertMode-explorer{
+  .expertMode-on {
+    padding: 16px;
+    .expertMode-explorer {
       width: 100%;
       height: 160px;
       border: 2px solid $grey;
       box-sizing: border-box;
     }
-    .expertMode-explorer-address{
+    .expertMode-explorer-address {
       position: relative;
       width: 100%;
       height: 40px;
@@ -1103,7 +1101,7 @@ html, body {
       padding-left: 36px;
 
     }
-    .expertMode-explorer-favicon{
+    .expertMode-explorer-favicon {
       width: 36px;
       height: 38px;
       position: absolute;
@@ -1113,7 +1111,7 @@ html, body {
       background-position: 50% 50%;
       background-image: inline-image("appicon_expertMode_favicon.svg")
     }
-    .expertMode-password-container{
+    .expertMode-password-container {
       position: relative;
       width: 220px;
       height: 48px;
@@ -1125,16 +1123,16 @@ html, body {
       padding: 0 8px;
       line-height: 46px;
       font-size: 20px;
-      &:active{
+      &:active {
         background-color: $lightGrey;
       }
     }
-    .expertMode-password-bullet{
+    .expertMode-password-bullet {
       height: 100%;
       width: 96px;
       color: $grey;
     }
-    .expertMode-password{
+    .expertMode-password {
       position: absolute;
       top: 0;
       left: 0;
@@ -1147,17 +1145,16 @@ html, body {
   }
 }
 
-
-.view-twoFactorAuth{
-  .content{
+.view-twoFactorAuth {
+  .content {
     position: absolute;
   }
 
-  .twoFactorAuth-on .twoFactorAuth-illustration{  
+  .twoFactorAuth-on .twoFactorAuth-illustration {
     background-image: inline-image("app_preventToiterNet_illustration_blue.png");
   }
 
-  .twoFactorAuth-off .twoFactorAuth-illustration{  
+  .twoFactorAuth-off .twoFactorAuth-illustration{
     background-image: inline-image("app_preventToiterNet_illustration_grey.png");
   }
 
@@ -1337,7 +1334,7 @@ html, body {
 
 .boot-wifi-enable-alert{
   width: 256px;
-  display: none; 
+  display: none;
   .cell{
     height: 40px;
     width: 100%;
