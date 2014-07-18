@@ -821,8 +821,18 @@ html, body {
 }
 
 .launcher-menu, .launcher-pageControl-up, .launcher-pageControl-down {
-  position: relative;
+  position: absolute;
+  width: 80px;
   height: 80px;
+}
+
+.launcher-pageControl-up {
+  display: none;
+  top: 80px;
+}
+
+.launcher-pageControl-down {
+  top: 160px;
 }
 
 .launcher-pageControl-up {

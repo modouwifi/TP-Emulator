@@ -386,6 +386,10 @@ $(document).ready(function() {
               return;
             }
             launcherPageNum--;
+            $view.find(".launcher-pageControl-down").fadeIn(globeDuration);
+            if (launcherPageNum == 0) {
+              $view.find(".launcher-pageControl-up").fadeOut(globeDuration);
+            }
             method.scrollControl();
           },
 
@@ -394,6 +398,10 @@ $(document).ready(function() {
               return;
             }
             launcherPageNum++;
+            $view.find(".launcher-pageControl-up").fadeIn(globeDuration);
+            if (launcherPageNum == totalPageNumber - 1) {
+              $view.find(".launcher-pageControl-down").fadeOut(globeDuration);
+            }
             method.scrollControl();
           },
 
