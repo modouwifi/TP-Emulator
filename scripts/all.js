@@ -388,6 +388,7 @@ $(document).ready(function() {
             launcherPageNum--;
             method.scrollControl();
           },
+
           down: function() {
             if (launcherPageNum >= totalPageNumber -1) {
               return;
@@ -395,6 +396,7 @@ $(document).ready(function() {
             launcherPageNum++;
             method.scrollControl();
           },
+
           scrollControl: function(if_animation) {
             var scrollbarHeight = $view.find(".launcher-pageControl-scrollbar").height();
             var scrollbarThumbHeight = scrollbarHeight / totalPageNumber;
@@ -419,6 +421,7 @@ $(document).ready(function() {
           },
 
         }
+
         return method;
       }
     },
@@ -560,7 +563,6 @@ $(document).ready(function() {
       control.navbar($view);
 
       $view.find(".navbar-title").text("网络设置")
-
 
       if (TPdata.system.AP_mode == false) {
 
@@ -1460,7 +1462,7 @@ $(document).ready(function() {
           }, 300)
         },
 
-        "ok": function (callback) {
+        "ok": function(callback) {
           $alert.css({
             "opacity" : "0",
             "transition": "0.3s ease-out",
@@ -1566,7 +1568,7 @@ $(document).ready(function() {
         }
       }
 
-      function deleteChar () {
+      function deleteChar() {
         var str = $keyboard.textfield[0].innerHTML;
         $keyboard.textfield[0].innerHTML = str.substring(0, str.length - 1);
         placeholder_switch();
