@@ -386,10 +386,6 @@ $(document).ready(function() {
               return;
             }
             launcherPageNum--;
-            $view.find(".launcher-pageControl-down").fadeIn(globeDuration);
-            if (launcherPageNum == 0) {
-              $view.find(".launcher-pageControl-up").fadeOut(globeDuration);
-            }
             method.scrollControl();
           },
 
@@ -398,10 +394,6 @@ $(document).ready(function() {
               return;
             }
             launcherPageNum++;
-            $view.find(".launcher-pageControl-up").fadeIn(globeDuration);
-            if (launcherPageNum == totalPageNumber - 1) {
-              $view.find(".launcher-pageControl-down").fadeOut(globeDuration);
-            }
             method.scrollControl();
           },
 
@@ -414,6 +406,15 @@ $(document).ready(function() {
               "transform": "translate3d(0," + scrollbarThumbTop + "px,0)",
               "transition"  : "0.3s ease-in-out",
             });
+
+            if (launcherPageNum == 0) {
+              $view.find(".launcher-pageControl-up").fadeOut(globeDuration);
+              $view.find(".launcher-pageControl-down").fadeIn(globeDuration);
+            }else if (launcherPageNum == totalPageNumber - 1) {
+              $view.find(".launcher-pageControl-up").fadeIn(globeDuration);
+              $view.find(".launcher-pageControl-down").fadeOut(globeDuration);
+
+            }
 
             if (if_animation == false) {
               $view.find(".launcher-apps-scroller").children().css({
@@ -1139,11 +1140,11 @@ $(document).ready(function() {
 
       function dateUpdate () {
         var date = new Date();
-        var date_years = date.getFullYear();
-          var date_month = date.getMonth();
-          var date_date = date.getDate();
-          var date_day = date.getDay();
-        var date_hours = date.getHours();
+        var date_years   = date.getFullYear();
+        var date_month   = date.getMonth();
+        var date_date    = date.getDate();
+        var date_day     = date.getDay();
+        var date_hours   = date.getHours();
         var date_minutes = date.getMinutes();
 
         if (date_minutes < 10) {
